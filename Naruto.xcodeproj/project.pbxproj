@@ -8,17 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		E0E817F82A77A2F80071FBB6 /* NarutoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E817F72A77A2F80071FBB6 /* NarutoApp.swift */; };
-		E0E817FA2A77A2F80071FBB6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E817F92A77A2F80071FBB6 /* ContentView.swift */; };
+		E0E817FA2A77A2F80071FBB6 /* NarutoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E817F92A77A2F80071FBB6 /* NarutoView.swift */; };
 		E0E817FC2A77A2FC0071FBB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0E817FB2A77A2FC0071FBB6 /* Assets.xcassets */; };
 		E0E817FF2A77A2FC0071FBB6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0E817FE2A77A2FC0071FBB6 /* Preview Assets.xcassets */; };
+		E0E818072A77A3AA0071FBB6 /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E818062A77A3AA0071FBB6 /* CharacterListView.swift */; };
+		E0E8180A2A77A3C70071FBB6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E818092A77A3C70071FBB6 /* NetworkManager.swift */; };
+		E0E8180D2A77A3DB0071FBB6 /* Characters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E8180C2A77A3DB0071FBB6 /* Characters.swift */; };
+		E0E818102A77A4820071FBB6 /* ClansListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E8180F2A77A4820071FBB6 /* ClansListView.swift */; };
+		E0E818132A77CF270071FBB6 /* CharacterDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E818122A77CF270071FBB6 /* CharacterDetailsViewModel.swift */; };
+		E0E818152A77CF660071FBB6 /* CharacterDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E818142A77CF660071FBB6 /* CharacterDetailsView.swift */; };
+		E0E818172A77CFDF0071FBB6 /* CharacterListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E818162A77CFDF0071FBB6 /* CharacterListViewModel.swift */; };
+		E0E818192A77D04C0071FBB6 /* RowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E818182A77D04C0071FBB6 /* RowView.swift */; };
+		E0E8181B2A77D6020071FBB6 /* CharacterImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E8181A2A77D6020071FBB6 /* CharacterImage.swift */; };
+		E0E8181E2A77EC930071FBB6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = E0E8181D2A77EC930071FBB6 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E0E817F42A77A2F80071FBB6 /* Naruto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Naruto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0E817F72A77A2F80071FBB6 /* NarutoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarutoApp.swift; sourceTree = "<group>"; };
-		E0E817F92A77A2F80071FBB6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E0E817F92A77A2F80071FBB6 /* NarutoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarutoView.swift; sourceTree = "<group>"; };
 		E0E817FB2A77A2FC0071FBB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E0E817FE2A77A2FC0071FBB6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E0E818062A77A3AA0071FBB6 /* CharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListView.swift; sourceTree = "<group>"; };
+		E0E818092A77A3C70071FBB6 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E0E8180C2A77A3DB0071FBB6 /* Characters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Characters.swift; sourceTree = "<group>"; };
+		E0E8180F2A77A4820071FBB6 /* ClansListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClansListView.swift; sourceTree = "<group>"; };
+		E0E818122A77CF270071FBB6 /* CharacterDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModel.swift; sourceTree = "<group>"; };
+		E0E818142A77CF660071FBB6 /* CharacterDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsView.swift; sourceTree = "<group>"; };
+		E0E818162A77CFDF0071FBB6 /* CharacterListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListViewModel.swift; sourceTree = "<group>"; };
+		E0E818182A77D04C0071FBB6 /* RowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RowView.swift; sourceTree = "<group>"; };
+		E0E8181A2A77D6020071FBB6 /* CharacterImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0E8181E2A77EC930071FBB6 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,9 +71,14 @@
 		E0E817F62A77A2F80071FBB6 /* Naruto */ = {
 			isa = PBXGroup;
 			children = (
+				E0E8180B2A77A3D10071FBB6 /* Models */,
+				E0E8180E2A77A4690071FBB6 /* ClansListView */,
+				E0E818052A77A3910071FBB6 /* CharacterListView */,
+				E0E818112A77CEFC0071FBB6 /* CharacterDetailsView */,
 				E0E817F72A77A2F80071FBB6 /* NarutoApp.swift */,
-				E0E817F92A77A2F80071FBB6 /* ContentView.swift */,
+				E0E817F92A77A2F80071FBB6 /* NarutoView.swift */,
 				E0E817FB2A77A2FC0071FBB6 /* Assets.xcassets */,
+				E0E818082A77A3B60071FBB6 /* Services */,
 				E0E817FD2A77A2FC0071FBB6 /* Preview Content */,
 			);
 			path = Naruto;
@@ -65,6 +90,50 @@
 				E0E817FE2A77A2FC0071FBB6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E0E818052A77A3910071FBB6 /* CharacterListView */ = {
+			isa = PBXGroup;
+			children = (
+				E0E818062A77A3AA0071FBB6 /* CharacterListView.swift */,
+				E0E818162A77CFDF0071FBB6 /* CharacterListViewModel.swift */,
+				E0E818182A77D04C0071FBB6 /* RowView.swift */,
+			);
+			path = CharacterListView;
+			sourceTree = "<group>";
+		};
+		E0E818082A77A3B60071FBB6 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E0E818092A77A3C70071FBB6 /* NetworkManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E0E8180B2A77A3D10071FBB6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E0E8180C2A77A3DB0071FBB6 /* Characters.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E0E8180E2A77A4690071FBB6 /* ClansListView */ = {
+			isa = PBXGroup;
+			children = (
+				E0E8180F2A77A4820071FBB6 /* ClansListView.swift */,
+			);
+			path = ClansListView;
+			sourceTree = "<group>";
+		};
+		E0E818112A77CEFC0071FBB6 /* CharacterDetailsView */ = {
+			isa = PBXGroup;
+			children = (
+				E0E818122A77CF270071FBB6 /* CharacterDetailsViewModel.swift */,
+				E0E818142A77CF660071FBB6 /* CharacterDetailsView.swift */,
+				E0E8181A2A77D6020071FBB6 /* CharacterImage.swift */,
+			);
+			path = CharacterDetailsView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +152,9 @@
 			dependencies = (
 			);
 			name = Naruto;
+			packageProductDependencies = (
+				E0E8181D2A77EC930071FBB6 /* Kingfisher */,
+			);
 			productName = Naruto;
 			productReference = E0E817F42A77A2F80071FBB6 /* Naruto.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +183,9 @@
 				Base,
 			);
 			mainGroup = E0E817EB2A77A2F80071FBB6;
+			packageReferences = (
+				E0E8181C2A77EC910071FBB6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = E0E817F52A77A2F80071FBB6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +212,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0E817FA2A77A2F80071FBB6 /* ContentView.swift in Sources */,
+				E0E818102A77A4820071FBB6 /* ClansListView.swift in Sources */,
+				E0E818192A77D04C0071FBB6 /* RowView.swift in Sources */,
+				E0E8180A2A77A3C70071FBB6 /* NetworkManager.swift in Sources */,
+				E0E817FA2A77A2F80071FBB6 /* NarutoView.swift in Sources */,
+				E0E8181B2A77D6020071FBB6 /* CharacterImage.swift in Sources */,
 				E0E817F82A77A2F80071FBB6 /* NarutoApp.swift in Sources */,
+				E0E818172A77CFDF0071FBB6 /* CharacterListViewModel.swift in Sources */,
+				E0E818132A77CF270071FBB6 /* CharacterDetailsViewModel.swift in Sources */,
+				E0E818072A77A3AA0071FBB6 /* CharacterListView.swift in Sources */,
+				E0E8180D2A77A3DB0071FBB6 /* Characters.swift in Sources */,
+				E0E818152A77CF660071FBB6 /* CharacterDetailsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +423,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E0E8181C2A77EC910071FBB6 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E0E8181D2A77EC930071FBB6 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E0E8181C2A77EC910071FBB6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E0E817EC2A77A2F80071FBB6 /* Project object */;
 }
