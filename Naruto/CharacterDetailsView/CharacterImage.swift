@@ -20,7 +20,7 @@ struct CharacterImage: View {
             .placeholder{
                 ProgressView().progressViewStyle(CircularProgressViewStyle(tint: Color(.gray)))
             }
-            .onFailureImage(UIImage(systemName: "xmark"))
+            .onFailureImage(UIImage(named: "defaultImage"))
             .cacheOriginalImage()
             .scaleFactor(1)
             .fade(duration: 0.25)
