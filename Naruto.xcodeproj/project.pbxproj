@@ -54,6 +54,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E06387752A7BF5DC00BA3652 /* TailedBeastsListView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TailedBeastsListView;
+			sourceTree = "<group>";
+		};
 		E0E817EB2A77A2F80071FBB6 = {
 			isa = PBXGroup;
 			children = (
@@ -73,6 +80,7 @@
 		E0E817F62A77A2F80071FBB6 /* Naruto */ = {
 			isa = PBXGroup;
 			children = (
+				E06387752A7BF5DC00BA3652 /* TailedBeastsListView */,
 				E0E8180B2A77A3D10071FBB6 /* Models */,
 				E0E8180E2A77A4690071FBB6 /* ClansListView */,
 				E0E818052A77A3910071FBB6 /* CharacterListView */,

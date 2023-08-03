@@ -27,6 +27,7 @@ struct CharacterDetailsView: View {
                 Text(viewModel.jutsu)
                     .font(.headline)
                 
+                Text(viewModel.personal)
                 Spacer()
             }
         }

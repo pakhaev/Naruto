@@ -12,12 +12,17 @@ import Kingfisher
 struct CharacterListView: View {
     @StateObject private var viewModel = CharacterListViewModel()
     
-    @State private var searchText = ""
-    
     var body: some View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
+                    
+                    if let tempCharacter = viewModel.tempCharacter {
+                        NavigationLink(destination: CharacterDetailsView(viewModel: tempCharacter)) {
+                            GridElementView(viewModel: tempCharacter)
+                        }
+                    }
+                    
                     ForEach(viewModel.searchResults(), id: \.characterName) { characterDetailViewModel in
                         NavigationLink(destination: CharacterDetailsView(viewModel: characterDetailViewModel)) {
                             GridElementView(viewModel: characterDetailViewModel)
@@ -27,6 +32,7 @@ struct CharacterListView: View {
                         } //:NAVIGATIONLINK
                     }
                 }
+                .animation(.default, value: viewModel.searchText)
                 .navigationTitle("Characters")
             }
         }
@@ -34,22 +40,8 @@ struct CharacterListView: View {
             await viewModel.fetchCharacters(page: 1)
         }
         .searchable(text: $viewModel.searchText)
-        .onChange(of: viewModel.searchText) { searchText in
-            viewModel.searchTask?.cancel()
-            
-            viewModel.searchTask = Task.detached {
-                do {
-                    try await Task.sleep(nanoseconds: 1_000_000_000)
-                } catch {
-                    print(error)
-                }
-                
-                if Task.isCancelled {
-                    print("Задача была отменена")
-                    return
-                }
-                await viewModel.fetchSearch()
-            }
+        .onChange(of: viewModel.searchText) { _ in
+            viewModel.sleepFetchSearch()
         }
     }
 }

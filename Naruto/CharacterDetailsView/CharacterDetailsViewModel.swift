@@ -13,14 +13,10 @@ final class CharacterDetailsViewModel: ObservableObject {
     }
     
     var imageData: URL? {
-//        if character.images.isEmpty {
-//            return nil
-//        }
         guard let firstURL = character.images.last,
               let url = URL(string: firstURL) else {
             return nil
         }
-//        let url = URL(string: character.images.last!)
         return url
     }
     
@@ -33,7 +29,7 @@ final class CharacterDetailsViewModel: ObservableObject {
         let novel = debut.novel ?? ""
         let movie = debut.movie ?? ""
         
-        var result = ""
+        var result = "Debut:\n"
         result += (!anime.isEmpty) ? "Anime: \(anime)\n" : ""
         result += (!novel.isEmpty) ? "Novel: \(novel)\n" : ""
         result += (!movie.isEmpty) ? "Movie: \(movie)\n" : ""
@@ -47,6 +43,21 @@ final class CharacterDetailsViewModel: ObservableObject {
         }
         
         return "Jutsu: " + jutsu.joined(separator: "\n")
+    }
+    
+    var personal: String {
+//        guard let personal = character.personal else { return "" }
+//
+//        switch personal {
+//        case .array(let array):
+//            print(array.joined(separator: " "))
+//        case .dictionary(let dictionary):
+//            print(dictionary.status ?? "status is empty")
+//            print(dictionary.titles ?? "status is empty")
+//        case .stringValue(_):
+//            print("")
+//        }
+        return ""
     }
     
     private let character: Character

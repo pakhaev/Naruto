@@ -16,10 +16,10 @@ struct CharacterDebut: Decodable {
 struct CharacterPersonal: Decodable {
     let species: String?
     let status: String?
-    let classification: String?
-    let titles: [String]?
+    let classification: TeamValue?
     let team: TeamValue?
-    let partner: String?
+    let partner: TeamValue?
+    let titles: [String]?
     
     enum TeamValue: Decodable {
         case string(String)
@@ -35,7 +35,6 @@ struct CharacterPersonal: Decodable {
             }
         }
     }
-
 }
 
 struct Character: Decodable {
@@ -44,8 +43,26 @@ struct Character: Decodable {
     let images: [String]
     let debut: CharacterDebut?
     let jutsu: [String]?
-//    let personal: CharacterPersonal?
+    let personal: PersonalValue?
     let uniqueTraits: [String]?
+    
+    enum PersonalValue: Decodable {
+        case array([String])
+        case dictionary(CharacterPersonal)
+        case stringValue(String)
+
+        init(from decoder: Decoder) throws {
+            if let arrayValue = try? decoder.singleValueContainer().decode([String].self) {
+                self = .array(arrayValue)
+            } else if let stringValue = try? decoder.singleValueContainer().decode(String.self) {
+                self = .stringValue(stringValue)
+            } else if let dictionaryValue = try? decoder.singleValueContainer().decode(CharacterPersonal.self) {
+                self = .dictionary(dictionaryValue)
+            } else {
+                throw NetworkError.decodingError
+            }
+        }
+    }
 }
 
 struct CharactersData: Decodable {
@@ -53,6 +70,13 @@ struct CharactersData: Decodable {
     let currentPage: String
     let pageSize: Int
     let totalCharacters: Int
+}
+
+struct TailedBeastsData: Decodable {
+    let tailedBeasts: [Character]
+    let currentPage: String
+    let pageSize: Int
+    let totalTailedBeasts: Int
 }
 
 
@@ -66,7 +90,7 @@ extension Character {
                 ],
             debut: CharacterDebut(anime: "Naruto Shippūden Episode #205", novel: "Naruto Shippūden the Movie: Bonds", movie: "Naruto Shippūden the Movie: Bonds"),
             jutsu: ["Shadow Arms"],
-//            personal: CharacterPersonal(species: "Leech", status: nil, classification: nil, titles: nil, team: nil, partner: nil),
+            personal: nil,
             uniqueTraits: [
                 "Detects negative emotions",
                 "Feeds on darkness in a beings heart to create dark chakra"
