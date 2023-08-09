@@ -45,7 +45,6 @@ final class NetworkManager {
 }
 
 enum API: String {
-    case characters = "https://api.narutodb.xyz/character"
-    case tailedBeast = "https://api.narutodb.xyz/tailed-beast"
-    case search = "https://api.narutodb.xyz/character/search"
+    case characters = "https://www.narutodb.xyz/api/character"
+    case tailedBeast = "https://narutodb.xyz/api/tailed-beast"
 }

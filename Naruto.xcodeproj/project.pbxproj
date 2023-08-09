@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E038465B2A83DA2A00265FE4 /* AkatsukiKaraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E038465A2A83DA2A00265FE4 /* AkatsukiKaraView.swift */; };
+		E03846642A84108A00265FE4 /* CustomTabItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03846632A84108A00265FE4 /* CustomTabItemsView.swift */; };
+		E03846662A84178A00265FE4 /* MenuButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03846652A84178A00265FE4 /* MenuButtons.swift */; };
+		E06387772A7C3BC700BA3652 /* TailedBeastsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E06387762A7C3BC700BA3652 /* TailedBeastsListView.swift */; };
+		E08CD8702A82C70F00946E72 /* SideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08CD86F2A82C70F00946E72 /* SideMenuView.swift */; };
+		E08CD8722A82C73B00946E72 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08CD8712A82C73B00946E72 /* MainView.swift */; };
+		E08CD8742A82C8DD00946E72 /* TabButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08CD8732A82C8DD00946E72 /* TabButtonView.swift */; };
+		E08CD8762A82CAFE00946E72 /* CustomCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08CD8752A82CAFE00946E72 /* CustomCornersView.swift */; };
+		E08CD8782A82D15900946E72 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08CD8772A82D15900946E72 /* CustomTabView.swift */; };
 		E0A103242A79608500ECA1C0 /* GridElementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A103232A79608500ECA1C0 /* GridElementView.swift */; };
 		E0E817F82A77A2F80071FBB6 /* NarutoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E817F72A77A2F80071FBB6 /* NarutoApp.swift */; };
 		E0E817FA2A77A2F80071FBB6 /* NarutoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E817F92A77A2F80071FBB6 /* NarutoView.swift */; };
@@ -25,6 +34,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E038465A2A83DA2A00265FE4 /* AkatsukiKaraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AkatsukiKaraView.swift; sourceTree = "<group>"; };
+		E03846632A84108A00265FE4 /* CustomTabItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabItemsView.swift; sourceTree = "<group>"; };
+		E03846652A84178A00265FE4 /* MenuButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtons.swift; sourceTree = "<group>"; };
+		E06387762A7C3BC700BA3652 /* TailedBeastsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TailedBeastsListView.swift; sourceTree = "<group>"; };
+		E08CD86F2A82C70F00946E72 /* SideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuView.swift; sourceTree = "<group>"; };
+		E08CD8712A82C73B00946E72 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		E08CD8732A82C8DD00946E72 /* TabButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButtonView.swift; sourceTree = "<group>"; };
+		E08CD8752A82CAFE00946E72 /* CustomCornersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCornersView.swift; sourceTree = "<group>"; };
+		E08CD8772A82D15900946E72 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		E0A103232A79608500ECA1C0 /* GridElementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridElementView.swift; sourceTree = "<group>"; };
 		E0E817F42A77A2F80071FBB6 /* Naruto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Naruto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0E817F72A77A2F80071FBB6 /* NarutoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarutoApp.swift; sourceTree = "<group>"; };
@@ -54,11 +72,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E038465C2A83E02600265FE4 /* CustomTabView */ = {
+			isa = PBXGroup;
+			children = (
+				E08CD8772A82D15900946E72 /* CustomTabView.swift */,
+				E03846632A84108A00265FE4 /* CustomTabItemsView.swift */,
+				E08CD8732A82C8DD00946E72 /* TabButtonView.swift */,
+			);
+			path = CustomTabView;
+			sourceTree = "<group>";
+		};
 		E06387752A7BF5DC00BA3652 /* TailedBeastsListView */ = {
 			isa = PBXGroup;
 			children = (
+				E06387762A7C3BC700BA3652 /* TailedBeastsListView.swift */,
 			);
 			path = TailedBeastsListView;
+			sourceTree = "<group>";
+		};
+		E08CD86E2A82C6D500946E72 /* SideMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				E08CD86F2A82C70F00946E72 /* SideMenuView.swift */,
+				E08CD8712A82C73B00946E72 /* MainView.swift */,
+				E08CD8752A82CAFE00946E72 /* CustomCornersView.swift */,
+				E038465A2A83DA2A00265FE4 /* AkatsukiKaraView.swift */,
+				E03846652A84178A00265FE4 /* MenuButtons.swift */,
+			);
+			path = SideMenuView;
 			sourceTree = "<group>";
 		};
 		E0E817EB2A77A2F80071FBB6 = {
@@ -80,6 +121,8 @@
 		E0E817F62A77A2F80071FBB6 /* Naruto */ = {
 			isa = PBXGroup;
 			children = (
+				E038465C2A83E02600265FE4 /* CustomTabView */,
+				E08CD86E2A82C6D500946E72 /* SideMenuView */,
 				E06387752A7BF5DC00BA3652 /* TailedBeastsListView */,
 				E0E8180B2A77A3D10071FBB6 /* Models */,
 				E0E8180E2A77A4690071FBB6 /* ClansListView */,
@@ -227,13 +270,22 @@
 				E0E818192A77D04C0071FBB6 /* RowView.swift in Sources */,
 				E0E8180A2A77A3C70071FBB6 /* NetworkManager.swift in Sources */,
 				E0E817FA2A77A2F80071FBB6 /* NarutoView.swift in Sources */,
+				E08CD8782A82D15900946E72 /* CustomTabView.swift in Sources */,
 				E0E8181B2A77D6020071FBB6 /* CharacterImage.swift in Sources */,
+				E08CD8762A82CAFE00946E72 /* CustomCornersView.swift in Sources */,
 				E0E817F82A77A2F80071FBB6 /* NarutoApp.swift in Sources */,
+				E038465B2A83DA2A00265FE4 /* AkatsukiKaraView.swift in Sources */,
 				E0E818172A77CFDF0071FBB6 /* CharacterListViewModel.swift in Sources */,
+				E06387772A7C3BC700BA3652 /* TailedBeastsListView.swift in Sources */,
+				E08CD8702A82C70F00946E72 /* SideMenuView.swift in Sources */,
 				E0E818132A77CF270071FBB6 /* CharacterDetailsViewModel.swift in Sources */,
 				E0E818072A77A3AA0071FBB6 /* CharacterListView.swift in Sources */,
+				E03846642A84108A00265FE4 /* CustomTabItemsView.swift in Sources */,
+				E03846662A84178A00265FE4 /* MenuButtons.swift in Sources */,
 				E0E8180D2A77A3DB0071FBB6 /* Characters.swift in Sources */,
+				E08CD8742A82C8DD00946E72 /* TabButtonView.swift in Sources */,
 				E0E818152A77CF660071FBB6 /* CharacterDetailsView.swift in Sources */,
+				E08CD8722A82C73B00946E72 /* MainView.swift in Sources */,
 				E0A103242A79608500ECA1C0 /* GridElementView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

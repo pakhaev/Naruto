@@ -16,7 +16,6 @@ struct CharacterImage: View {
     
     var body: some View {
         KFImage(imageURL)
-//            .cancelOnDisappear(true)
             .placeholder{
                 ProgressView().progressViewStyle(CircularProgressViewStyle(tint: Color(.gray)))
             }

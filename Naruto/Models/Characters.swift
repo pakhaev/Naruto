@@ -65,18 +65,39 @@ struct Character: Decodable {
     }
 }
 
-struct CharactersData: Decodable {
-    let characters: [Character]
-    let currentPage: String
-    let pageSize: Int
-    let totalCharacters: Int
+protocol DataResponseProtocol: Decodable {
+    var data: [Character] { get }
+    var currentPage: Int { get }
+    var pageSize: Int { get }
+    var totalData: Int { get }
 }
 
-struct TailedBeastsData: Decodable {
-    let tailedBeasts: [Character]
-    let currentPage: String
+struct CharactersData: DataResponseProtocol {
+    let data: [Character]
+    let currentPage: Int
     let pageSize: Int
-    let totalTailedBeasts: Int
+    let totalData: Int
+
+    enum CodingKeys: String, CodingKey {
+        case data = "characters"
+        case currentPage
+        case pageSize
+        case totalData = "totalCharacters"
+    }
+}
+
+struct TailedBeastsData: DataResponseProtocol {
+    let data: [Character]
+    let currentPage: Int
+    let pageSize: Int
+    let totalData: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case data = "tailedBeasts"
+        case currentPage
+        case pageSize
+        case totalData = "totalTailedBeasts"
+    }
 }
 
 

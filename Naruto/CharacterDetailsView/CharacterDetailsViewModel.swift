@@ -8,6 +8,8 @@
 import Foundation
 
 final class CharacterDetailsViewModel: ObservableObject {
+    let id: Int
+    
     var characterName: String {
         character.name
     }
@@ -64,13 +66,13 @@ final class CharacterDetailsViewModel: ObservableObject {
     
     init(character: Character) {
         self.character = character
+        self.id = character.id
     }
 }
 
 extension CharacterDetailsViewModel: Equatable {
     static func == (lhs: CharacterDetailsViewModel, rhs: CharacterDetailsViewModel) -> Bool {
-        // Верните true, если ваши объекты должны считаться эквивалентными
-        // Например, если у вас есть уникальный идентификатор персонажа, вы можете сравнивать их по этому идентификатору.
-        return lhs.characterName == rhs.characterName // Здесь characterName - это ваш уникальный идентификатор
+//        print("lhs \(lhs.id) rhs \(rhs.id)")
+        return lhs.id == rhs.id
     }
 }

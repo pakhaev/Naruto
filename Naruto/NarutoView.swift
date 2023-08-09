@@ -8,20 +8,11 @@
 import SwiftUI
 
 struct NarutoView: View {
+    
     var body: some View {
-        
-        TabView {
-            CharacterListView()
-                .tabItem {
-                    Label("Characters", systemImage: "person.fill")
-                }
-            
-            ClansListView()
-                .tabItem {
-                    Label("Clans", systemImage: "person.3.fill")
-                }
-        }
+        MainView()
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -7,6 +7,43 @@
 
 import SwiftUI
 
+struct GridView<T: DataResponseProtocol>: View {
+    @ObservedObject var viewModel: CharacterListViewModel<T>
+    let title: String
+    
+    var body: some View {
+        ScrollView {
+            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
+                
+                if let tempCharacter = viewModel.tempCharacter {
+                    NavigationLink(destination: CharacterDetailsView(viewModel: tempCharacter)) {
+                        GridElementView(viewModel: tempCharacter)
+                    }
+                }
+                
+                ForEach(viewModel.searchResults(), id: \.id) { characterDetailViewModel in
+                    NavigationLink(destination: CharacterDetailsView(viewModel: characterDetailViewModel)) {
+                        GridElementView(viewModel: characterDetailViewModel)
+                            .onAppear {
+                                viewModel.loadNextPageIfNeeded(currentRow: characterDetailViewModel)
+                            }
+                    } //:NAVIGATIONLINK
+                }
+            }
+            .animation(.default, value: viewModel.searchText)
+            .navigationTitle(title)
+        }
+        .task {
+            await viewModel.fetchCharacters(page: 1)
+        }
+        .searchable(text: $viewModel.searchText)
+        .onChange(of: viewModel.searchText) { _ in
+            viewModel.sleepFetchSearch()
+        }
+    }
+}
+
+
 struct GridElementView: View {
     let viewModel: CharacterDetailsViewModel
     
