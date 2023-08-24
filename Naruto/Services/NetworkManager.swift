@@ -16,6 +16,7 @@ enum NetworkError: Error {
 }
 
 final class NetworkManager {
+    let url = "https://www.narutodb.xyz/api/"
     static let shared = NetworkManager()
     
     private init() {}
@@ -25,26 +26,66 @@ final class NetworkManager {
             throw NetworkError.invalidURL
         }
         
+        // Попытка получить кэшированный ответ
+        if let cachedResponse = URLCache.shared.cachedResponse(for: URLRequest(url: url)){
+            
+            let data = cachedResponse.data
+            
+            let decoder = JSONDecoder()
+            do {
+                let dataModel = try decoder.decode(T.self, from: data)
+                return dataModel
+            } catch {
+                print("Ошибка декодирования кэшированных данных: \(error)")
+                throw NetworkError.decodingError
+            }
+        }
+        
+        // Если данных нет в кэше, выполним сетевой запрос
+        
         let (data, _) = try await URLSession.shared.data(from: url)
         let decoder = JSONDecoder()
         
-//        guard let dataModel = try? decoder.decode(T.self, from: data) else {
-//            throw NetworkError.decodingError
-//        }
-//        return dataModel
-        
         do {
+            
+            let response = HTTPURLResponse(
+                url: url,
+                statusCode: 200,
+                httpVersion: "HTTP/1.1",
+                headerFields: nil
+            )
+            
+            let cachedResponse = CachedURLResponse(
+                response: response!,
+                data: data
+            )
+            
+            URLCache.shared.storeCachedResponse(cachedResponse, for: URLRequest(url: url))
+            
             let dataModel = try decoder.decode(T.self, from: data)
+            
             return dataModel
         } catch {
-            // Обработайте ошибку декодирования
+            // Обработка ошибки декодирования
             print("Ошибка декодирования: \(error)")
             throw NetworkError.decodingError
         }
     }
+
 }
 
 enum API: String {
-    case characters = "https://www.narutodb.xyz/api/character"
-    case tailedBeast = "https://narutodb.xyz/api/tailed-beast"
+    case characters = "character"
+    case tailedBeast = "tailed-beast"
+    case akatsuki = "akatsuki"
+    case kara = "kara"
+    case teams = "team"
+    case village = "village"
+    case kekkeiGenkai = "kekkei-genkai"
+    case clans = "clan"
 }
+
+//        guard let dataModel = try? decoder.decode(T.self, from: data) else {
+//            throw NetworkError.decodingError
+//        }
+//        return dataModel
