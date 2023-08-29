@@ -105,7 +105,7 @@ struct TailedBeastsData: DataResponseProtocol {
     }
 }
 
-struct Akatsuki: DataResponseProtocol {
+struct AkatsukiData: DataResponseProtocol {
     let data: [Character]
     let currentPage: Int
     let pageSize: Int
@@ -120,7 +120,7 @@ struct Akatsuki: DataResponseProtocol {
     }
 }
 
-struct Kara: DataResponseProtocol {
+struct KaraData: DataResponseProtocol {
     let data: [Character]
     let currentPage: Int
     let pageSize: Int
@@ -128,14 +128,14 @@ struct Kara: DataResponseProtocol {
     let defaultImage = "kara"
     
     enum CodingKeys: String, CodingKey {
-        case data = "clans"
+        case data = "kara"
         case currentPage
         case pageSize
         case totalData = "totalKara"
     }
 }
 
-struct Teams: DataResponseProtocol {
+struct TeamsData: DataResponseProtocol {
     var data: [InfoData]
     var currentPage: Int
     var pageSize: Int
@@ -150,7 +150,7 @@ struct Teams: DataResponseProtocol {
     }
 }
 
-struct Villages: DataResponseProtocol {
+struct VillagesData: DataResponseProtocol {
     var data: [InfoData]
     var currentPage: Int
     var pageSize: Int
@@ -165,7 +165,7 @@ struct Villages: DataResponseProtocol {
     }
 }
 
-struct KekkeiGenkai: DataResponseProtocol {
+struct KekkeiGenkaiData: DataResponseProtocol {
     var data: [InfoData]
     var currentPage: Int
     var pageSize: Int
@@ -180,7 +180,7 @@ struct KekkeiGenkai: DataResponseProtocol {
     }
 }
 
-struct Clans: DataResponseProtocol {
+struct ClansData: DataResponseProtocol {
     var data: [InfoData]
     var currentPage: Int
     var pageSize: Int
