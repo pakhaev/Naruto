@@ -16,7 +16,6 @@ struct SideMenuView: View {
     var body: some View {
         //Side menu
         VStack(alignment: .leading, spacing: 15) {
-//            MenuButtons(showMenu: $showMenu)
             VStack(alignment: .leading, spacing: 6) {
                 
                 Text("Naruto Info")
