@@ -1,5 +1,5 @@
 //
-//  ClansListViewModel.swift
+//  BlockListViewModel.swift
 //  Naruto
 //
 //  Created by Khusain on 11.08.2023.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class ClansListViewModel<T: DataResponseProtocol>: CharacterListViewModel<T>{
+final class BlockListViewModel<T: DataResponseProtocol>: CharacterListViewModel<T>{
     
     @Published var info: [InfoData] = []
     @Published var characters: [Character] = []
@@ -69,12 +69,12 @@ final class ClansListViewModel<T: DataResponseProtocol>: CharacterListViewModel<
         guard let url else {
             return
         }
-        
+        print("123")
         do {
             print("\(url)/search?name=\(searchText.replacingOccurrences(of: " ", with: "%20"))")
-            let urlWIthSearch = "\(url)/search?name=\(searchText.replacingOccurrences(of: " ", with: "%20"))"
+            let urlWithSearch = "\(url)/search?name=\(searchText.replacingOccurrences(of: " ", with: "%20"))"
             
-            let info = try await NetworkManager.shared.fetch(InfoData.self, from: urlWIthSearch)
+            let info = try await NetworkManager.shared.fetch(InfoData.self, from: urlWithSearch)
             
             await MainActor.run {
 //                guard let defaultImage else {
@@ -105,6 +105,7 @@ final class ClansListViewModel<T: DataResponseProtocol>: CharacterListViewModel<
             }
             await self.fetchSearch()
         }
+        
         if searchText.isEmpty && tempInfo != nil {
             tempInfo = nil
         }

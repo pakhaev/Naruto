@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct GridView<T: DataResponseProtocol>: View {
-    @ObservedObject var viewModel: CharacterListViewModel<T>
+    @StateObject var viewModel: CharacterListViewModel<T>
     let title: String
+    let showButton: Bool
+    
+    @Binding var showMenu: Bool
     
     var body: some View {
         ScrollView {
@@ -25,7 +28,6 @@ struct GridView<T: DataResponseProtocol>: View {
                     Spacer()
                 }
             } else {
-                
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
                     
                     if let tempCharacter = viewModel.tempCharacter {
@@ -45,11 +47,13 @@ struct GridView<T: DataResponseProtocol>: View {
                 }
                 .animation(.default, value: viewModel.searchText)
                 .navigationTitle(title)
-//                .toolbar {
-//                    ToolbarItem(placement: .navigationBarLeading) {
-//                        MenuButtons(showMenu: $showMenu)
-//                    }
-//                }
+                .toolbar {
+                    if showButton {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            MenuButtons(showMenu: $showMenu)
+                        }
+                    }
+                }
             }
         }
         .task {

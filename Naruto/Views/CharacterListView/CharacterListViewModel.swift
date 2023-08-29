@@ -60,7 +60,6 @@ class CharacterListViewModel<T: DataResponseProtocol>: ObservableObject {
                 return
             }
             
-            
             if totalCharacters == nil,
                pageSize == nil,
                defaultImage == nil {
@@ -84,7 +83,6 @@ class CharacterListViewModel<T: DataResponseProtocol>: ObservableObject {
             }
             
         } catch {
-            print("FetchInfo")
             print(error)
         }
     }

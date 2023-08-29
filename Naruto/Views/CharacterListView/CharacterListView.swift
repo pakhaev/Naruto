@@ -7,20 +7,36 @@
 
 import SwiftUI
 
-struct CharacterListView: View {
+struct CharacterListView<T: DataResponseProtocol>: View {
+    
+    let dataType: T.Type
+    let url: API
+    let title: String
+    
+    @Binding var showMenu: Bool
+    
     var body: some View {
-        let charactersDataViewModel = CharacterListViewModel<CharactersData>(t: CharactersData.self, url: API.characters)
-        
+        let viewModel = CharacterListViewModel<T>(t: dataType, url: url)
+
         NavigationView {
-            GridView(viewModel: charactersDataViewModel, title: "Characters")
+            GridView(viewModel: viewModel, title: title, showButton: true, showMenu: $showMenu)
         }
-        
+        .onAppear {
+            withAnimation(.spring()) {
+                showMenu = false
+            }
+        }
         
     }
 }
 
 struct CharactersListView_Previews: PreviewProvider {
     static var previews: some View {
-        CharacterListView()
+        CharacterListView<CharactersData>(
+            dataType: CharactersData.self,
+            url: API.characters,
+            title: "Characters",
+            showMenu: Binding.constant(false)
+        )
     }
 }
