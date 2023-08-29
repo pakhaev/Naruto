@@ -38,15 +38,12 @@ struct NarutoView: View {
                     verticalPadding: 60
                 )
                 
-                CustomTabView(selectedTab: $selectedTab)
+                CustomTabView(selectedTab: $selectedTab, showMenu: $showMenu)
                     .cornerRadius(showMenu ? 15 : 0)
             }
             .scaleEffect(showMenu ? 0.84 : 1)
             .offset(x: showMenu ? getRect().width - 150 : 0)
             .ignoresSafeArea()
-            .overlay(alignment: .topLeading) {
-                MenuButtons(showMenu: $showMenu)
-            }
         }
         .gesture(
             DragGesture(minimumDistance: 10, coordinateSpace: .global).onEnded { value in
