@@ -11,6 +11,7 @@ struct CharacterDebut: Decodable {
     let anime: String?
     let novel: String?
     let movie: String?
+    let appearsIn: String?
 }
 
 struct CharacterPersonal: Decodable {
@@ -143,7 +144,7 @@ struct TeamsData: DataResponseProtocol {
     var defaultImage = "teams"
     
     enum CodingKeys: String, CodingKey {
-        case data = "teams"
+        case data = "defaultTeams"
         case currentPage
         case pageSize
         case totalData = "totalTeams"
@@ -155,7 +156,7 @@ struct VillagesData: DataResponseProtocol {
     var currentPage: Int
     var pageSize: Int
     var totalData: Int
-    var defaultImage = "villages"
+    var defaultImage = "defaultVillages"
     
     enum CodingKeys: String, CodingKey {
         case data = "villages"
@@ -170,7 +171,7 @@ struct KekkeiGenkaiData: DataResponseProtocol {
     var currentPage: Int
     var pageSize: Int
     var totalData: Int
-    var defaultImage = "genkai"
+    var defaultImage = "defaultGenkai"
     
     enum CodingKeys: String, CodingKey {
         case data = "kekkeigenkai"
@@ -210,7 +211,12 @@ extension Character {
             images: [
                 "https://static.wikia.nocookie.net/naruto/images/e/e6/Ten-Tails_emerges.png"
                 ],
-            debut: CharacterDebut(anime: "Naruto Shippūden Episode #205", novel: "Naruto Shippūden the Movie: Bonds", movie: "Naruto Shippūden the Movie: Bonds"),
+            debut: CharacterDebut(
+                anime: "Naruto Shippūden Episode #205",
+                novel: "Naruto Shippūden the Movie: Bonds",
+                movie: "Naruto Shippūden the Movie: Bonds",
+                appearsIn: "Anime, Novel, Movie"
+            ),
             jutsu: ["Shadow Arms"],
             personal: nil,
             uniqueTraits: [
