@@ -31,6 +31,29 @@ struct GridBoxView<T: DataResponseProtocol>: View {
             } else {
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
                     
+                    if let tempBoxing = viewModel.tempInfo {
+                        NavigationLink {
+                            GridView<CharactersData>(
+                                viewModel: CharacterListViewModel(
+                                    characters: tempBoxing.characters,
+                                    defaultImage: "defaultImage"
+                                ),
+                                title: "Characters",
+                                showButton: false,
+                                showMenu: $showMenu
+                            )
+                        } label: {
+                            VStack {
+                                Image(viewModel.defaultImage!)
+                                    .resizable()
+                                    .frame(width: 150, height: 150)
+                                    .cornerRadius(20)
+                                Text(tempBoxing.name)
+                            }
+                        }
+
+                    }
+                    
                     ForEach(viewModel.search(), id:\.id) { newValue in
                         NavigationLink {
                             GridView<CharactersData>(
@@ -47,7 +70,8 @@ struct GridBoxView<T: DataResponseProtocol>: View {
                             VStack {
                                 Image(viewModel.defaultImage!)
                                     .resizable()
-                                    .frame(width: 100, height: 100)
+                                    .frame(width: 150, height: 150)
+                                    .cornerRadius(20)
                                 Text(newValue.name)
                             }
                             .onAppear {
@@ -57,17 +81,23 @@ struct GridBoxView<T: DataResponseProtocol>: View {
                     }
                 }
                 .navigationTitle(title)
+                .toolbarColorScheme(.light, for: .navigationBar)
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         MenuButtons(showMenu: $showMenu)
                     }
                 }
+                .toolbarBackground(
+                    Color.yellow,
+                    for: .navigationBar
+                )
             }
         }
         .task {
             await viewModel.fetchInfo()
             await viewModel.fetchClans(page: 1)
         }
+        .animation(.default, value: viewModel.searchText)
         .searchable(text: $viewModel.searchText)
         .onChange(of: viewModel.searchText) { _ in
             viewModel.sleepFetchSearch()

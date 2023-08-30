@@ -47,6 +47,7 @@ struct GridView<T: DataResponseProtocol>: View {
                 }
                 .animation(.default, value: viewModel.searchText)
                 .navigationTitle(title)
+                .toolbarColorScheme(.light, for: .navigationBar)
                 .toolbar {
                     if showButton {
                         ToolbarItem(placement: .navigationBarLeading) {
@@ -54,8 +55,13 @@ struct GridView<T: DataResponseProtocol>: View {
                         }
                     }
                 }
+                .toolbarBackground(
+                    Color.yellow,
+                    for: .navigationBar
+                )
             }
         }
+        
         .task {
             await viewModel.fetchInfo()
             await viewModel.fetchCharacters(page: 1)
