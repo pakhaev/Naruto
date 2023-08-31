@@ -16,11 +16,18 @@ final class SettingsViewModel: ObservableObject {
     
     func popupToggle() async {
         await clearAllMemory()
-        showPopup.toggle()
+        
+        await MainActor.run {
+            showPopup.toggle()
+        }
         
         do {
             try await Task.sleep(nanoseconds: 2_000_000_000)
-            showPopup.toggle()
+            
+            await MainActor.run {
+                showPopup.toggle()
+            }
+            
         } catch {
             print("show popup time error")
         }
