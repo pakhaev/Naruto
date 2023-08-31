@@ -21,6 +21,7 @@ struct CharacterPersonal: Decodable {
     let team: TeamValue?
     let partner: TeamValue?
     let titles: [String]?
+    let clan: TeamValue?
     
     enum TeamValue: Decodable {
         case string(String)
@@ -141,10 +142,10 @@ struct TeamsData: DataResponseProtocol {
     var currentPage: Int
     var pageSize: Int
     var totalData: Int
-    var defaultImage = "teams"
+    var defaultImage = "defaultTeams"
     
     enum CodingKeys: String, CodingKey {
-        case data = "defaultTeams"
+        case data = "teams"
         case currentPage
         case pageSize
         case totalData = "totalTeams"
