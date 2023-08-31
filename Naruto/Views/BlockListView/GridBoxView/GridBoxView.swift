@@ -59,7 +59,7 @@ struct GridBoxView<T: DataResponseProtocol>: View {
                             GridView<CharactersData>(
                                 viewModel: CharacterListViewModel(
                                     characters: newValue.characters,
-                                    defaultImage: viewModel.defaultImage ?? "defaultImage"
+                                    defaultImage: "characters"
                                 ),
                                 title: "Characters",
                                 showButton: false,

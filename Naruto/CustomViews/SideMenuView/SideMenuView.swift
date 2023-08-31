@@ -22,13 +22,13 @@ struct SideMenuView: View {
                     .font(.title)
                     .fontWeight(.heavy)
                     .padding(.top, 40)
+                    .foregroundColor(.black)
                 
                 Text("Menu")
                     .font(.title3)
                     .fontWeight(.heavy)
                     .foregroundColor(.white)
             }
-            
             CustomTabItemsView(selectedTab: $selectedTab)
         }
         .padding()

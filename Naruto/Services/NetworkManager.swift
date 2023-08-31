@@ -84,8 +84,3 @@ enum API: String {
     case kekkeiGenkai = "kekkei-genkai"
     case clans = "clan"
 }
-
-//        guard let dataModel = try? decoder.decode(T.self, from: data) else {
-//            throw NetworkError.decodingError
-//        }
-//        return dataModel

@@ -7,10 +7,114 @@
 
 import Foundation
 
+
 final class CharacterDetailsViewModel: ObservableObject {
     let id: Int
     let defaultImage: String
     
+    @Published var data: [String: [String]] = [:]
+    
+    private let character: Character
+    
+    private func getDebut() {
+        guard let debut = character.debut else {
+            return
+        }
+        
+        var tempArray: [String] = []
+        
+        if let debut = debut.anime {
+            tempArray.append(debut)
+        }
+        
+        if let novel = debut.novel {
+            tempArray.append(novel)
+        }
+        
+        if let movie = debut.movie {
+            tempArray.append(movie)
+        }
+        
+        if let appearsIn = debut.appearsIn {
+            tempArray.append(appearsIn)
+        }
+        
+        data.updateValue(tempArray, forKey: "Debut")
+    }
+    
+    private func getJutsu() {
+        guard let jutsu = character.jutsu else {
+            return
+        }
+        
+        data.updateValue(jutsu, forKey: "Jutsu")
+    }
+    
+    private func getUniqueTraits() {
+        guard let uniqueTraits = character.uniqueTraits else {
+            return
+        }
+        
+        data.updateValue(uniqueTraits, forKey: "uniqueTraits")
+    }
+    
+    private func getPersonal() {
+        guard let personal = character.personal else {
+            print("Return there")
+            return
+        }
+        
+        
+        switch personal {
+        case .array(let array):
+            data.updateValue(array, forKey: "Personal")
+        case .dictionary(let dict):
+            if let species = dict.species {
+                data.updateValue([species], forKey: "Species")
+            }
+            
+            if let status = dict.status {
+                print("status \(status)")
+                data.updateValue([status], forKey: "Status")
+            }
+            
+            if let titles = dict.titles {
+                data.updateValue(titles, forKey: "Titles")
+            }
+            
+            getTeamValue(dict.team, key: "Team")
+            getTeamValue(dict.classification, key: "Classification")
+            getTeamValue(dict.partner, key: "Partner")
+            getTeamValue(dict.clan, key: "Clan")
+            
+        case .stringValue(let str):
+            data.updateValue([str], forKey: "Personal")
+        }
+        
+    }
+    
+    private func getTeamValue(_ value: CharacterPersonal.TeamValue?, key: String) {
+        if let value {
+            switch value {
+            case .string(let str):
+                data.updateValue([str], forKey: key)
+            case .array(let array):
+                data.updateValue(array, forKey: key)
+            }
+        }
+    }
+    
+    func getInfo() {
+        getJutsu()
+        getPersonal()
+        getDebut()
+        
+        if data.isEmpty {
+            data.updateValue(["There is no information about this character"], forKey: "Ooops...")
+        }
+        
+    }
+
     var characterName: String {
         character.name
     }
@@ -23,48 +127,6 @@ final class CharacterDetailsViewModel: ObservableObject {
         return url
     }
     
-    var debut: String {
-        guard let debut = character.debut else {
-            return ""
-        }
-        
-        let anime = debut.anime ?? ""
-        let novel = debut.novel ?? ""
-        let movie = debut.movie ?? ""
-        
-        var result = "Debut:\n"
-        result += (!anime.isEmpty) ? "Anime: \(anime)\n" : ""
-        result += (!novel.isEmpty) ? "Novel: \(novel)\n" : ""
-        result += (!movie.isEmpty) ? "Movie: \(movie)\n" : ""
-        
-        return result
-    }
-    
-    var jutsu: String {
-        guard let jutsu = character.jutsu else {
-            return ""
-        }
-        
-        return "Jutsu: " + jutsu.joined(separator: "\n")
-    }
-    
-    var personal: String {
-//        guard let personal = character.personal else { return "" }
-//
-//        switch personal {
-//        case .array(let array):
-//            print(array.joined(separator: " "))
-//        case .dictionary(let dictionary):
-//            print(dictionary.status ?? "status is empty")
-//            print(dictionary.titles ?? "status is empty")
-//        case .stringValue(_):
-//            print("")
-//        }
-        return ""
-    }
-    
-    private let character: Character
-    
     init(character: Character, defaultImage: String) {
         self.character = character
         self.id = character.id
@@ -74,7 +136,6 @@ final class CharacterDetailsViewModel: ObservableObject {
 
 extension CharacterDetailsViewModel: Equatable {
     static func == (lhs: CharacterDetailsViewModel, rhs: CharacterDetailsViewModel) -> Bool {
-//        print("lhs \(lhs.id) rhs \(rhs.id)")
         return lhs.id == rhs.id
     }
 }

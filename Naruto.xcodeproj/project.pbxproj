@@ -16,6 +16,7 @@
 		E08CD8742A82C8DD00946E72 /* TabButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08CD8732A82C8DD00946E72 /* TabButtonView.swift */; };
 		E08CD8762A82CAFE00946E72 /* CustomCornersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08CD8752A82CAFE00946E72 /* CustomCornersView.swift */; };
 		E08CD8782A82D15900946E72 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08CD8772A82D15900946E72 /* CustomTabView.swift */; };
+		E09260B52A9FDBBC009F86D7 /* GenericGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09260B42A9FDBBC009F86D7 /* GenericGridView.swift */; };
 		E09285D72A9E30460049304A /* MenuButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09285D62A9E30460049304A /* MenuButtonsViewModel.swift */; };
 		E09285D92A9E3D220049304A /* BlockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09285D82A9E3D220049304A /* BlockListView.swift */; };
 		E09285DE2A9E63CF0049304A /* GridBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09285DD2A9E63CF0049304A /* GridBoxView.swift */; };
@@ -45,6 +46,7 @@
 		E08CD8732A82C8DD00946E72 /* TabButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButtonView.swift; sourceTree = "<group>"; };
 		E08CD8752A82CAFE00946E72 /* CustomCornersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCornersView.swift; sourceTree = "<group>"; };
 		E08CD8772A82D15900946E72 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
+		E09260B42A9FDBBC009F86D7 /* GenericGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericGridView.swift; sourceTree = "<group>"; };
 		E09285D62A9E30460049304A /* MenuButtonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonsViewModel.swift; sourceTree = "<group>"; };
 		E09285D82A9E3D220049304A /* BlockListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListView.swift; sourceTree = "<group>"; };
 		E09285DD2A9E63CF0049304A /* GridBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridBoxView.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				E0E8180E2A77A4690071FBB6 /* BlockListView */,
 				E0E818052A77A3910071FBB6 /* CharacterListView */,
 				E0E818112A77CEFC0071FBB6 /* CharacterDetailsView */,
+				E09260B42A9FDBBC009F86D7 /* GenericGridView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				E0B12EF12A86875D0024EA80 /* BlockListViewModel.swift in Sources */,
 				E0E818152A77CF660071FBB6 /* CharacterDetailsView.swift in Sources */,
 				E03846682A843B9F00265FE4 /* BackgroundSubview.swift in Sources */,
+				E09260B52A9FDBBC009F86D7 /* GenericGridView.swift in Sources */,
 				E0A103242A79608500ECA1C0 /* GridView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
