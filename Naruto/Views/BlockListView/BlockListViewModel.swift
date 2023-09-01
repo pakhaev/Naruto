@@ -5,8 +5,6 @@
 //  Created by Khusain on 11.08.2023.
 //
 
-import Foundation
-
 final class BlockListViewModel<T: DataResponseProtocol>: CommonViewModel<T>{
     
     init(type: T.Type, url: API) {
@@ -41,7 +39,7 @@ final class BlockListViewModel<T: DataResponseProtocol>: CommonViewModel<T>{
         }
     }
     
-    func sleepFetchSearch() {
+    override func sleepFetchSearch() {
         searchTask?.cancel()
         
         searchTask = Task.detached {[unowned self] in

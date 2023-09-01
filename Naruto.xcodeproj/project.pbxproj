@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E00F84322AA269D700176C5F /* GenericListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00F84312AA269D700176C5F /* GenericListView.swift */; };
+		E00F84342AA269E000176C5F /* GenericListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00F84332AA269E000176C5F /* GenericListViewModel.swift */; };
 		E02211AA2A94C11B00DB0071 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02211A92A94C11B00DB0071 /* SettingsView.swift */; };
 		E02211AC2A94C30D00DB0071 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E02211AB2A94C30D00DB0071 /* SettingsViewModel.swift */; };
 		E03846642A84108A00265FE4 /* CustomTabItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E03846632A84108A00265FE4 /* CustomTabItemsView.swift */; };
@@ -18,16 +20,14 @@
 		E08CD8782A82D15900946E72 /* CustomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E08CD8772A82D15900946E72 /* CustomTabView.swift */; };
 		E09260B52A9FDBBC009F86D7 /* GenericGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09260B42A9FDBBC009F86D7 /* GenericGridView.swift */; };
 		E09285D72A9E30460049304A /* MenuButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09285D62A9E30460049304A /* MenuButtonsViewModel.swift */; };
-		E09285D92A9E3D220049304A /* BlockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09285D82A9E3D220049304A /* BlockListView.swift */; };
-		E09285DE2A9E63CF0049304A /* GridBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09285DD2A9E63CF0049304A /* GridBoxView.swift */; };
+		E09285DE2A9E63CF0049304A /* BlockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09285DD2A9E63CF0049304A /* BlockListView.swift */; };
 		E094DD412AA20CA500D81662 /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094DD402AA20CA500D81662 /* CommonViewModel.swift */; };
-		E0A103242A79608500ECA1C0 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A103232A79608500ECA1C0 /* GridView.swift */; };
+		E0A103242A79608500ECA1C0 /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A103232A79608500ECA1C0 /* CharacterListView.swift */; };
 		E0B12EF12A86875D0024EA80 /* BlockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B12EF02A86875D0024EA80 /* BlockListViewModel.swift */; };
 		E0E817F82A77A2F80071FBB6 /* NarutoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E817F72A77A2F80071FBB6 /* NarutoApp.swift */; };
 		E0E817FA2A77A2F80071FBB6 /* NarutoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E817F92A77A2F80071FBB6 /* NarutoView.swift */; };
 		E0E817FC2A77A2FC0071FBB6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0E817FB2A77A2FC0071FBB6 /* Assets.xcassets */; };
 		E0E817FF2A77A2FC0071FBB6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0E817FE2A77A2FC0071FBB6 /* Preview Assets.xcassets */; };
-		E0E818072A77A3AA0071FBB6 /* CharacterListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E818062A77A3AA0071FBB6 /* CharacterListView.swift */; };
 		E0E8180A2A77A3C70071FBB6 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E818092A77A3C70071FBB6 /* NetworkManager.swift */; };
 		E0E8180D2A77A3DB0071FBB6 /* Naruto.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E8180C2A77A3DB0071FBB6 /* Naruto.swift */; };
 		E0E818132A77CF270071FBB6 /* CharacterDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E818122A77CF270071FBB6 /* CharacterDetailsViewModel.swift */; };
@@ -38,6 +38,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E00F84312AA269D700176C5F /* GenericListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListView.swift; sourceTree = "<group>"; };
+		E00F84332AA269E000176C5F /* GenericListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericListViewModel.swift; sourceTree = "<group>"; };
 		E02211A92A94C11B00DB0071 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		E02211AB2A94C30D00DB0071 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		E03846632A84108A00265FE4 /* CustomTabItemsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabItemsView.swift; sourceTree = "<group>"; };
@@ -49,17 +51,15 @@
 		E08CD8772A82D15900946E72 /* CustomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabView.swift; sourceTree = "<group>"; };
 		E09260B42A9FDBBC009F86D7 /* GenericGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericGridView.swift; sourceTree = "<group>"; };
 		E09285D62A9E30460049304A /* MenuButtonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonsViewModel.swift; sourceTree = "<group>"; };
-		E09285D82A9E3D220049304A /* BlockListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListView.swift; sourceTree = "<group>"; };
-		E09285DD2A9E63CF0049304A /* GridBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridBoxView.swift; sourceTree = "<group>"; };
+		E09285DD2A9E63CF0049304A /* BlockListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListView.swift; sourceTree = "<group>"; };
 		E094DD402AA20CA500D81662 /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
-		E0A103232A79608500ECA1C0 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
+		E0A103232A79608500ECA1C0 /* CharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListView.swift; sourceTree = "<group>"; };
 		E0B12EF02A86875D0024EA80 /* BlockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListViewModel.swift; sourceTree = "<group>"; };
 		E0E817F42A77A2F80071FBB6 /* Naruto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Naruto.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0E817F72A77A2F80071FBB6 /* NarutoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarutoApp.swift; sourceTree = "<group>"; };
 		E0E817F92A77A2F80071FBB6 /* NarutoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NarutoView.swift; sourceTree = "<group>"; };
 		E0E817FB2A77A2FC0071FBB6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E0E817FE2A77A2FC0071FBB6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		E0E818062A77A3AA0071FBB6 /* CharacterListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListView.swift; sourceTree = "<group>"; };
 		E0E818092A77A3C70071FBB6 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		E0E8180C2A77A3DB0071FBB6 /* Naruto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Naruto.swift; sourceTree = "<group>"; };
 		E0E818122A77CF270071FBB6 /* CharacterDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsViewModel.swift; sourceTree = "<group>"; };
@@ -80,6 +80,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E00F84302AA269C600176C5F /* GenericListView */ = {
+			isa = PBXGroup;
+			children = (
+				E00F84312AA269D700176C5F /* GenericListView.swift */,
+				E00F84332AA269E000176C5F /* GenericListViewModel.swift */,
+				E09260B42A9FDBBC009F86D7 /* GenericGridView.swift */,
+			);
+			path = GenericListView;
+			sourceTree = "<group>";
+		};
 		E02211A82A94C10A00DB0071 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,22 +127,6 @@
 			path = MenuButtons;
 			sourceTree = "<group>";
 		};
-		E09285DC2A9E63BC0049304A /* GridBoxView */ = {
-			isa = PBXGroup;
-			children = (
-				E09285DD2A9E63CF0049304A /* GridBoxView.swift */,
-			);
-			path = GridBoxView;
-			sourceTree = "<group>";
-		};
-		E09285DF2A9E6E710049304A /* GridView */ = {
-			isa = PBXGroup;
-			children = (
-				E0A103232A79608500ECA1C0 /* GridView.swift */,
-			);
-			path = GridView;
-			sourceTree = "<group>";
-		};
 		E0B12EEE2A86868A0024EA80 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,11 +141,11 @@
 		E0B12EEF2A8686BB0024EA80 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				E00F84302AA269C600176C5F /* GenericListView */,
 				E02211A82A94C10A00DB0071 /* Settings */,
 				E0E8180E2A77A4690071FBB6 /* BlockListView */,
 				E0E818052A77A3910071FBB6 /* CharacterListView */,
 				E0E818112A77CEFC0071FBB6 /* CharacterDetailsView */,
-				E09260B42A9FDBBC009F86D7 /* GenericGridView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -198,8 +192,7 @@
 		E0E818052A77A3910071FBB6 /* CharacterListView */ = {
 			isa = PBXGroup;
 			children = (
-				E09285DF2A9E6E710049304A /* GridView */,
-				E0E818062A77A3AA0071FBB6 /* CharacterListView.swift */,
+				E0A103232A79608500ECA1C0 /* CharacterListView.swift */,
 				E0E818162A77CFDF0071FBB6 /* CharacterListViewModel.swift */,
 			);
 			path = CharacterListView;
@@ -224,9 +217,8 @@
 		E0E8180E2A77A4690071FBB6 /* BlockListView */ = {
 			isa = PBXGroup;
 			children = (
-				E09285DC2A9E63BC0049304A /* GridBoxView */,
+				E09285DD2A9E63CF0049304A /* BlockListView.swift */,
 				E0B12EF02A86875D0024EA80 /* BlockListViewModel.swift */,
-				E09285D82A9E3D220049304A /* BlockListView.swift */,
 				E094DD402AA20CA500D81662 /* CommonViewModel.swift */,
 			);
 			path = BlockListView;
@@ -318,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E00F84322AA269D700176C5F /* GenericListView.swift in Sources */,
 				E0E8180A2A77A3C70071FBB6 /* NetworkManager.swift in Sources */,
 				E0E817FA2A77A2F80071FBB6 /* NarutoView.swift in Sources */,
 				E08CD8782A82D15900946E72 /* CustomTabView.swift in Sources */,
@@ -328,21 +321,20 @@
 				E0E818172A77CFDF0071FBB6 /* CharacterListViewModel.swift in Sources */,
 				E08CD8702A82C70F00946E72 /* SideMenuView.swift in Sources */,
 				E0E818132A77CF270071FBB6 /* CharacterDetailsViewModel.swift in Sources */,
-				E09285D92A9E3D220049304A /* BlockListView.swift in Sources */,
-				E0E818072A77A3AA0071FBB6 /* CharacterListView.swift in Sources */,
 				E02211AA2A94C11B00DB0071 /* SettingsView.swift in Sources */,
 				E03846642A84108A00265FE4 /* CustomTabItemsView.swift in Sources */,
 				E094DD412AA20CA500D81662 /* CommonViewModel.swift in Sources */,
-				E09285DE2A9E63CF0049304A /* GridBoxView.swift in Sources */,
+				E09285DE2A9E63CF0049304A /* BlockListView.swift in Sources */,
 				E03846662A84178A00265FE4 /* MenuButtons.swift in Sources */,
 				E0E8180D2A77A3DB0071FBB6 /* Naruto.swift in Sources */,
 				E08CD8742A82C8DD00946E72 /* TabButtonView.swift in Sources */,
 				E02211AC2A94C30D00DB0071 /* SettingsViewModel.swift in Sources */,
+				E00F84342AA269E000176C5F /* GenericListViewModel.swift in Sources */,
 				E0B12EF12A86875D0024EA80 /* BlockListViewModel.swift in Sources */,
 				E0E818152A77CF660071FBB6 /* CharacterDetailsView.swift in Sources */,
 				E03846682A843B9F00265FE4 /* BackgroundSubview.swift in Sources */,
 				E09260B52A9FDBBC009F86D7 /* GenericGridView.swift in Sources */,
-				E0A103242A79608500ECA1C0 /* GridView.swift in Sources */,
+				E0A103242A79608500ECA1C0 /* CharacterListView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

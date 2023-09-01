@@ -16,56 +16,56 @@ struct CustomTabView: View {
             VStack {
                 switch selectedTab {
                 case 0:
-                    CharacterListView(
+                    GenericListView(
                         dataType: CharactersData.self,
                         url: .characters,
                         title: "Characters",
                         showMenu: $showMenu
                     )
                 case 1:
-                    BlockListView(
+                    GenericListView(
                         dataType: ClansData.self,
                         url: .clans,
                         title: "Clans",
                         showMenu: $showMenu
                     )
                 case 2:
-                    BlockListView(
+                    GenericListView(
                         dataType: VillagesData.self,
                         url: .village,
                         title: "Villages",
                         showMenu: $showMenu
                     )
                 case 3:
-                    BlockListView(
+                    GenericListView(
                         dataType: KekkeiGenkaiData.self,
                         url: .kekkeiGenkai,
                         title: "Kekkei Genkai",
                         showMenu: $showMenu
                     )
                 case 4:
-                    CharacterListView(
+                    GenericListView(
                         dataType: TailedBeastsData.self,
                         url: .tailedBeast,
                         title: "Tailed Beast",
                         showMenu: $showMenu
                     )
                 case 5:
-                    BlockListView(
+                    GenericListView(
                         dataType: TeamsData.self,
                         url: .teams,
                         title: "Teams",
                         showMenu: $showMenu
                     )
                 case 6:
-                    CharacterListView(
+                    GenericListView(
                         dataType: KaraData.self,
                         url: .kara,
                         title: "Kara",
                         showMenu: $showMenu
                     )
                 case 7:
-                    CharacterListView(
+                    GenericListView(
                         dataType: AkatsukiData.self,
                         url: .akatsuki,
                         title: "Akatsuki",

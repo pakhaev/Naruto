@@ -9,37 +9,74 @@ import SwiftUI
 
 struct BlockListView<T: DataResponseProtocol>: View {
     
-    let dataType: T.Type
-    let url: API
-    let title: String
+    @StateObject var viewModel: CommonViewModel<T>
     
     @Binding var showMenu: Bool
     
     var body: some View {
-        let viewModel = BlockListViewModel<T>(type: dataType, url: url)
-
-        NavigationView {
-            GridBoxView(
-                viewModel: viewModel,
-                title: title,
-                showMenu: $showMenu
-            )
+        if let tempBoxing = viewModel.tempData {
+            NavigationLink {
+                GenericGridView<CharactersData>(
+                    viewModel: CharacterListViewModel(
+                        characters: tempBoxing.characters
+                    ),
+                    title: "Characters",
+                    showButton: false,
+                    showMenu: $showMenu
+                )
+                
+            } label: {
+                BoxElementView(
+                    image: viewModel.defaultImage,
+                    name: tempBoxing.name
+                )
+            }
         }
-        .onAppear {
-            withAnimation(.spring()) {
-                showMenu = false
+        
+        ForEach(viewModel.search(), id:\.id) { newValue in
+            NavigationLink {
+                
+                GenericGridView<CharactersData>(
+                    viewModel: CharacterListViewModel(
+                        characters: newValue.characters
+                    ),
+                    title: "Characters",
+                    showButton: false,
+                    showMenu: $showMenu
+                )
+                
+            } label: {
+                BoxElementView(
+                    image: viewModel.defaultImage,
+                    name: newValue.name
+                )
+                .onAppear {
+                    viewModel.loadNextPageIfNeeded(currentRowName: newValue.name)
+                }
             }
         }
     }
 }
 
-struct BlockListView_Previews: PreviewProvider {
+struct BoxElementView: View {
+    let image: String
+    let name: String
+    
+    
+    var body: some View {
+        VStack {
+            Image(image)
+                .resizable()
+                .frame(width: 150, height: 150)
+                .cornerRadius(20)
+            Text(name)
+        }
+    }
+    
+}
+
+struct GridBoxView_Previews: PreviewProvider {
     static var previews: some View {
-        BlockListView<ClansData>(
-            dataType: ClansData.self,
-            url: API.clans,
-            title: "Clans",
-            showMenu: Binding.constant(false)
-        )
+        NarutoView()
     }
 }

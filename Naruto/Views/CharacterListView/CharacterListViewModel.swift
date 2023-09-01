@@ -50,7 +50,7 @@ final class CharacterListViewModel<T: DataResponseProtocol>: CommonViewModel<T> 
         }
     }
     
-    func sleepFetchSearch() {
+    override func sleepFetchSearch() {
         if !fetch {
             return
         }
