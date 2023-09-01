@@ -31,36 +31,44 @@ struct GridView<T: DataResponseProtocol>: View {
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
                     
                     if let tempCharacter = viewModel.tempCharacter {
-                        NavigationLink(destination: CharacterDetailsView(viewModel: tempCharacter)) {
+                        
+                        NavigationLink {
+                            CharacterDetailsView(viewModel: tempCharacter)
+                        } label: {
                             GridElementView(viewModel: tempCharacter)
                         }
+                        
                     }
                     
                     ForEach(viewModel.searchResults(), id: \.id) { characterDetailViewModel in
-                        NavigationLink(destination: CharacterDetailsView(viewModel: characterDetailViewModel)) {
+                        
+                        NavigationLink {
+                            CharacterDetailsView(viewModel: characterDetailViewModel)
+                        } label: {
                             GridElementView(viewModel: characterDetailViewModel)
-                                .onAppear {
-                                    viewModel.loadNextPageIfNeeded(currentRow: characterDetailViewModel)
-                                }
-                        } //:NAVIGATIONLINK
-                    }
-                }
-                .animation(.default, value: viewModel.searchText)
-                .navigationTitle(title)
-                .toolbarColorScheme(.light, for: .navigationBar)
-                .toolbar {
-                    if showButton {
-                        ToolbarItem(placement: .navigationBarLeading) {
-                            MenuButtons(showMenu: $showMenu)
+                            .onAppear {
+                                viewModel.loadNextPageIfNeeded(currentRow: characterDetailViewModel)
+                            }
                         }
                     }
                 }
-                .toolbarBackground(
-                    Color.yellow,
-                    for: .navigationBar
-                )
+                .animation(.default, value: viewModel.searchText)
+                
             }
         }
+        .navigationTitle(title)
+        .toolbarColorScheme(.light, for: .navigationBar)
+        .toolbar {
+            if showButton {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    MenuButtons(showMenu: $showMenu)
+                }
+            }
+        }
+        .toolbarBackground(
+            Color.yellow,
+            for: .navigationBar
+        )
         
         .task {
             await viewModel.fetchInfo()
@@ -101,6 +109,6 @@ struct GridElementView: View {
 
 struct GridElementView_Previews: PreviewProvider {
     static var previews: some View {
-        GridElementView(viewModel: CharacterDetailsViewModel(character: Character.getCharacter(), defaultImage: "characters"))
+        GridElementView(viewModel: CharacterDetailsViewModel(character: Character.getCharacter()))
     }
 }

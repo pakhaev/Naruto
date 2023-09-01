@@ -12,7 +12,6 @@ struct GridBoxView<T: DataResponseProtocol>: View {
     @StateObject var viewModel: BlockListViewModel<T>
     
     let title: String
-    let defaultImage: String
     
     @Binding var showMenu: Bool
     
@@ -35,21 +34,17 @@ struct GridBoxView<T: DataResponseProtocol>: View {
                         NavigationLink {
                             GridView<CharactersData>(
                                 viewModel: CharacterListViewModel(
-                                    characters: tempBoxing.characters,
-                                    defaultImage: "defaultImage"
+                                    characters: tempBoxing.characters
                                 ),
                                 title: "Characters",
                                 showButton: false,
                                 showMenu: $showMenu
                             )
                         } label: {
-                            VStack {
-                                Image(viewModel.defaultImage!)
-                                    .resizable()
-                                    .frame(width: 150, height: 150)
-                                    .cornerRadius(20)
-                                Text(tempBoxing.name)
-                            }
+                            BoxElementView(
+                                image: viewModel.defaultImage,
+                                name: tempBoxing.name
+                            )
                         }
 
                     }
@@ -58,8 +53,7 @@ struct GridBoxView<T: DataResponseProtocol>: View {
                         NavigationLink {
                             GridView<CharactersData>(
                                 viewModel: CharacterListViewModel(
-                                    characters: newValue.characters,
-                                    defaultImage: "characters"
+                                    characters: newValue.characters
                                 ),
                                 title: "Characters",
                                 showButton: false,
@@ -67,32 +61,32 @@ struct GridBoxView<T: DataResponseProtocol>: View {
                             )
                             
                         } label: {
-                            VStack {
-                                Image(viewModel.defaultImage!)
-                                    .resizable()
-                                    .frame(width: 150, height: 150)
-                                    .cornerRadius(20)
-                                Text(newValue.name)
-                            }
+                            BoxElementView(
+                                image: viewModel.defaultImage,
+                                name: newValue.name
+                            )
                             .onAppear {
                                 viewModel.loadNextPageIfNeeded(currentRow: newValue.name)
                             }
                         }
                     }
                 }
-                .navigationTitle(title)
-                .toolbarColorScheme(.light, for: .navigationBar)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        MenuButtons(showMenu: $showMenu)
-                    }
-                }
-                .toolbarBackground(
-                    Color.yellow,
-                    for: .navigationBar
-                )
+                .animation(.default, value: viewModel.searchText)
+                
             }
         }
+        .navigationTitle(title)
+        .toolbarColorScheme(.light, for: .navigationBar)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                MenuButtons(showMenu: $showMenu)
+            }
+        }
+        .toolbarBackground(
+            Color.yellow,
+            for: .navigationBar
+        )
+        
         .task {
             await viewModel.fetchInfo()
             await viewModel.fetchClans(page: 1)
@@ -110,6 +104,23 @@ struct GridBoxView<T: DataResponseProtocol>: View {
             )
         )
     }
+}
+
+struct BoxElementView: View {
+    let image: String
+    let name: String
+    
+    
+    var body: some View {
+        VStack {
+            Image(image)
+                .resizable()
+                .frame(width: 150, height: 150)
+                .cornerRadius(20)
+            Text(name)
+        }
+    }
+    
 }
 
 struct GridBoxView_Previews: PreviewProvider {

@@ -27,7 +27,6 @@ struct CustomTabView: View {
                         dataType: ClansData.self,
                         url: .clans,
                         title: "Clans",
-                        defaultImage: "defaultClans",
                         showMenu: $showMenu
                     )
                 case 2:
@@ -35,7 +34,6 @@ struct CustomTabView: View {
                         dataType: VillagesData.self,
                         url: .village,
                         title: "Villages",
-                        defaultImage: "defaultVillages",
                         showMenu: $showMenu
                     )
                 case 3:
@@ -43,7 +41,6 @@ struct CustomTabView: View {
                         dataType: KekkeiGenkaiData.self,
                         url: .kekkeiGenkai,
                         title: "Kekkei Genkai",
-                        defaultImage: "defaultGenkai",
                         showMenu: $showMenu
                     )
                 case 4:
@@ -58,7 +55,6 @@ struct CustomTabView: View {
                         dataType: TeamsData.self,
                         url: .teams,
                         title: "Teams",
-                        defaultImage: "defaultTeams",
                         showMenu: $showMenu
                     )
                 case 6:
@@ -76,7 +72,7 @@ struct CustomTabView: View {
                         showMenu: $showMenu
                     )
                 case 8:
-                    SettingsView()
+                    SettingsView(showMenu: $showMenu)
                 default:
                     EmptyView()
                 }
@@ -90,18 +86,6 @@ struct CustomTabView: View {
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Help()
-    }
-}
-
-struct Help: View {
-    var body: some View {
-        NavigationView {
-            Text("Help")
-                .font(.title)
-                .fontWeight(.heavy)
-                .foregroundColor(.blue)
-                .navigationTitle("Help")
-        }
+        NarutoView()
     }
 }

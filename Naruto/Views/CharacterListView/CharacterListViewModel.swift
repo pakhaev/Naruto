@@ -14,13 +14,13 @@ class CharacterListViewModel<T: DataResponseProtocol>: ObservableObject {
     @Published var searchText = ""
     @Published var tempCharacter: CharacterDetailsViewModel? = nil
     
-    var defaultImage: String? = nil
     var searchTask: Task<Void, Never>? = nil
     var fetch = true
     
     var currentPage = 1
     var totalCharacters: Int? = nil
     var loadedCharacters = 0
+    var defaultImage = ""
     
     var pageSize: Int? = nil
     var t: T.Type? = nil
@@ -32,9 +32,9 @@ class CharacterListViewModel<T: DataResponseProtocol>: ObservableObject {
         self.url = NetworkManager.shared.url + url.rawValue
     }
     
-    init(characters: [Character], defaultImage: String) {
+    init(characters: [Character]) {
         rows = characters.map {
-            CharacterDetailsViewModel(character: $0, defaultImage: defaultImage)
+            CharacterDetailsViewModel(character: $0)
         }
         
         fetch = false
@@ -61,8 +61,7 @@ class CharacterListViewModel<T: DataResponseProtocol>: ObservableObject {
             }
             
             if totalCharacters == nil,
-               pageSize == nil,
-               defaultImage == nil {
+               pageSize == nil {
                 
                 await MainActor.run {
                     loadedData = true
@@ -114,15 +113,12 @@ class CharacterListViewModel<T: DataResponseProtocol>: ObservableObject {
             }
             
             await MainActor.run {
-                guard let defaultImage else {
-                    return
-                }
                 
                 if page == 1 {
-                    rows = characters.map { CharacterDetailsViewModel(character: $0, defaultImage: defaultImage) }
+                    rows = characters.map { CharacterDetailsViewModel(character: $0) }
                 } else {
                     rows.append(contentsOf: characters.map {
-                        CharacterDetailsViewModel(character: $0, defaultImage: defaultImage)
+                        CharacterDetailsViewModel(character: $0)
                     })
                 }
                 isLoading = false
@@ -147,13 +143,9 @@ class CharacterListViewModel<T: DataResponseProtocol>: ObservableObject {
                 Character.self,
                 from: urlWIthSearch
             )
+            
             await MainActor.run {
-                guard let defaultImage else {
-                    print("Default image not found")
-                    return
-                }
-                
-                tempCharacter = CharacterDetailsViewModel(character: character, defaultImage: defaultImage)
+                tempCharacter = CharacterDetailsViewModel(character: character)
                 loadedData = false
             }
         } catch {
@@ -198,7 +190,6 @@ class CharacterListViewModel<T: DataResponseProtocol>: ObservableObject {
                 currentPage += 1
                 Task {
                     await fetchCharacters(page: currentPage)
-                    print("Current \(currentPage)")
                 }
             }
         }

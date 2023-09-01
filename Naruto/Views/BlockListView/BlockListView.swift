@@ -12,7 +12,6 @@ struct BlockListView<T: DataResponseProtocol>: View {
     let dataType: T.Type
     let url: API
     let title: String
-    let defaultImage: String
     
     @Binding var showMenu: Bool
     
@@ -23,7 +22,6 @@ struct BlockListView<T: DataResponseProtocol>: View {
             GridBoxView(
                 viewModel: viewModel,
                 title: title,
-                defaultImage: defaultImage,
                 showMenu: $showMenu
             )
         }
@@ -41,7 +39,7 @@ struct BlockListView_Previews: PreviewProvider {
             dataType: ClansData.self,
             url: API.clans,
             title: "Clans",
-            defaultImage: "defaultClans", showMenu: Binding.constant(false)
+            showMenu: Binding.constant(false)
         )
     }
 }

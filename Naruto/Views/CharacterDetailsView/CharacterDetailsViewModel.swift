@@ -10,11 +10,15 @@ import Foundation
 
 final class CharacterDetailsViewModel: ObservableObject {
     let id: Int
-    let defaultImage: String
     
     @Published var data: [String: [String]] = [:]
     
+    
     private let character: Character
+    
+    var defaultImage: String {
+        character.defaultImage
+    }
     
     private func getDebut() {
         guard let debut = character.debut else {
@@ -127,10 +131,9 @@ final class CharacterDetailsViewModel: ObservableObject {
         return url
     }
     
-    init(character: Character, defaultImage: String) {
+    init(character: Character) {
         self.character = character
         self.id = character.id
-        self.defaultImage = defaultImage
     }
 }
 

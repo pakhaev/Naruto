@@ -13,6 +13,8 @@ final class BlockListViewModel<T: DataResponseProtocol>: CharacterListViewModel<
     @Published var characters: [Character] = []
     @Published var tempInfo: InfoData?
     
+    
+    
     override init(t: T.Type, url: API) {
         super.init(t: t, url: url)
     }
@@ -69,7 +71,6 @@ final class BlockListViewModel<T: DataResponseProtocol>: CharacterListViewModel<
         guard let url else {
             return
         }
-        print("123")
         do {
             print("\(url)/search?name=\(searchText.replacingOccurrences(of: " ", with: "%20"))")
             let urlWithSearch = "\(url)/search?name=\(searchText.replacingOccurrences(of: " ", with: "%20"))"
@@ -77,11 +78,6 @@ final class BlockListViewModel<T: DataResponseProtocol>: CharacterListViewModel<
             let info = try await NetworkManager.shared.fetch(InfoData.self, from: urlWithSearch)
             
             await MainActor.run {
-//                guard let defaultImage else {
-//                    print("Default image not found")
-//                    return
-//                }
-                
                 tempInfo = info
             }
         } catch {
@@ -112,12 +108,9 @@ final class BlockListViewModel<T: DataResponseProtocol>: CharacterListViewModel<
     }
     
     func loadNextPageIfNeeded(currentRow: String) {
-        print("nextpage")
         
-        print("\(info.last?.name == currentRow)")
         if info.last?.name == currentRow {
             guard let pageSize else {
-                print("pageSize is nil")
                 return
             }
             
@@ -128,7 +121,6 @@ final class BlockListViewModel<T: DataResponseProtocol>: CharacterListViewModel<
                 currentPage += 1
                 Task {
                     await fetchClans(page: currentPage)
-                    print("Current \(currentPage)")
                 }
             }
         }

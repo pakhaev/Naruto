@@ -20,6 +20,7 @@
 		E09285D72A9E30460049304A /* MenuButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09285D62A9E30460049304A /* MenuButtonsViewModel.swift */; };
 		E09285D92A9E3D220049304A /* BlockListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09285D82A9E3D220049304A /* BlockListView.swift */; };
 		E09285DE2A9E63CF0049304A /* GridBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E09285DD2A9E63CF0049304A /* GridBoxView.swift */; };
+		E094DD412AA20CA500D81662 /* CommonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E094DD402AA20CA500D81662 /* CommonViewModel.swift */; };
 		E0A103242A79608500ECA1C0 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0A103232A79608500ECA1C0 /* GridView.swift */; };
 		E0B12EF12A86875D0024EA80 /* BlockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0B12EF02A86875D0024EA80 /* BlockListViewModel.swift */; };
 		E0E817F82A77A2F80071FBB6 /* NarutoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0E817F72A77A2F80071FBB6 /* NarutoApp.swift */; };
@@ -50,6 +51,7 @@
 		E09285D62A9E30460049304A /* MenuButtonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonsViewModel.swift; sourceTree = "<group>"; };
 		E09285D82A9E3D220049304A /* BlockListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListView.swift; sourceTree = "<group>"; };
 		E09285DD2A9E63CF0049304A /* GridBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridBoxView.swift; sourceTree = "<group>"; };
+		E094DD402AA20CA500D81662 /* CommonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViewModel.swift; sourceTree = "<group>"; };
 		E0A103232A79608500ECA1C0 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		E0B12EF02A86875D0024EA80 /* BlockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockListViewModel.swift; sourceTree = "<group>"; };
 		E0E817F42A77A2F80071FBB6 /* Naruto.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Naruto.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -225,6 +227,7 @@
 				E09285DC2A9E63BC0049304A /* GridBoxView */,
 				E0B12EF02A86875D0024EA80 /* BlockListViewModel.swift */,
 				E09285D82A9E3D220049304A /* BlockListView.swift */,
+				E094DD402AA20CA500D81662 /* CommonViewModel.swift */,
 			);
 			path = BlockListView;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				E0E818072A77A3AA0071FBB6 /* CharacterListView.swift in Sources */,
 				E02211AA2A94C11B00DB0071 /* SettingsView.swift in Sources */,
 				E03846642A84108A00265FE4 /* CustomTabItemsView.swift in Sources */,
+				E094DD412AA20CA500D81662 /* CommonViewModel.swift in Sources */,
 				E09285DE2A9E63CF0049304A /* GridBoxView.swift in Sources */,
 				E03846662A84178A00265FE4 /* MenuButtons.swift in Sources */,
 				E0E8180D2A77A3DB0071FBB6 /* Naruto.swift in Sources */,

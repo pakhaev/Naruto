@@ -47,6 +47,7 @@ struct Character: Decodable {
     let jutsu: [String]?
     let personal: PersonalValue?
     let uniqueTraits: [String]?
+    let defaultImage: String = "characters"
     
     enum PersonalValue: Decodable {
         case array([String])
