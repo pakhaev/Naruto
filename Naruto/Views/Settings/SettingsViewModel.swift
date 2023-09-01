@@ -85,7 +85,7 @@ final class SettingsViewModel: ObservableObject {
         ImageCache.default.calculateDiskStorageSize {[unowned self] memory in
             switch memory {
             case .success(let size):
-                imageCacheMemory = "Disk cache size: \(formattedSize(Double(size))) MB"
+                imageCacheMemory = "Image use disk cache size: \(formattedSize(Double(size))) MB"
                 print("Yes")
             case .failure(let error):
                 print(error)

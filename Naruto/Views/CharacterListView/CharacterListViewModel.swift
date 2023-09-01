@@ -7,146 +7,43 @@
 
 import Foundation
 
-class CharacterListViewModel<T: DataResponseProtocol>: ObservableObject {
-    @Published var rows: [CharacterDetailsViewModel] = []
-    @Published var isLoading = false
-    @Published var loadedData = false
-    @Published var searchText = ""
-    @Published var tempCharacter: CharacterDetailsViewModel? = nil
+final class CharacterListViewModel<T: DataResponseProtocol>: CommonViewModel<T> {
     
-    var searchTask: Task<Void, Never>? = nil
-    var fetch = true
-    
-    var currentPage = 1
-    var totalCharacters: Int? = nil
-    var loadedCharacters = 0
-    var defaultImage = ""
-    
-    var pageSize: Int? = nil
-    var t: T.Type? = nil
-    var url: String? = nil
-    
-    
-    init(t: T.Type, url: API) {
-        self.t = t
+    init(type: T.Type, url: API) {
+        super.init()
+        
+        self.type = type
         self.url = NetworkManager.shared.url + url.rawValue
     }
     
     init(characters: [Character]) {
-        rows = characters.map {
+        super.init()
+        data = characters.map {
             CharacterDetailsViewModel(character: $0)
         }
         
         fetch = false
     }
     
-    func searchResults() -> [CharacterDetailsViewModel] {
-        if searchText.isEmpty {
-            return rows
-        } else {
-            return rows.filter { $0.characterName.contains(searchText) }
-        }
-    }
-    
-    func fetchInfo() async {
-        do {
-            if !fetch {
-                return
-            }
-            
-            guard let t,
-                  let url
-            else {
-                return
-            }
-            
-            if totalCharacters == nil,
-               pageSize == nil {
-                
-                await MainActor.run {
-                    loadedData = true
-                }
-                
-                let info = try await NetworkManager.shared.fetch(
-                    t,
-                    from: url
-                )
-                
-                totalCharacters = info.totalData
-                pageSize = info.pageSize
-                defaultImage = info.defaultImage
-                
-                await MainActor.run{
-                    loadedData = false
-                }
-            }
-            
-        } catch {
-            print(error)
-        }
-    }
-    
-    func fetchCharacters(page: Int) async {
-        do {
-            if let pageSize,
-               loadedCharacters >= pageSize * currentPage || !fetch {
-                return
-            }
-            
-            guard let t,
-                  let url
-            else {
-                return
-            }
-            
-            
-            let urlWithPage = "\(url)?page=\(page)"
-            let characters = try await NetworkManager.shared.fetch(
-                t,
-                from: urlWithPage
-            )
-            
-            loadedCharacters += characters.pageSize
-            
-            guard let characters = characters.data as? [Character] else {
-                return
-            }
-            
-            await MainActor.run {
-                
-                if page == 1 {
-                    rows = characters.map { CharacterDetailsViewModel(character: $0) }
-                } else {
-                    rows.append(contentsOf: characters.map {
-                        CharacterDetailsViewModel(character: $0)
-                    })
-                }
-                isLoading = false
-            }
-        } catch {
-            print(error)
-        }
-    }
-    
     func fetchSearch() async {
-        if searchText.isEmpty || rows.contains(where: { $0.characterName.contains(searchText)}) || !fetch {
+        if searchText.isEmpty || data.contains(where: { $0.name.contains(searchText)}) || !fetch {
             return
         }
-        
+
         guard let url else {
             return
         }
         do {
-            loadedData = true
+            isLoading = true
             let urlWIthSearch = "\(url)/search?name=\(searchText.replacingOccurrences(of: " ", with: "%20"))"
             let character = try await NetworkManager.shared.fetch(
                 Character.self,
                 from: urlWIthSearch
             )
-            
+
             await MainActor.run {
-                tempCharacter = CharacterDetailsViewModel(character: character)
-                loadedData = false
+                tempData = CharacterDetailsViewModel(character: character)
+                isLoading = false
             }
         } catch {
             print(error)
@@ -173,26 +70,8 @@ class CharacterListViewModel<T: DataResponseProtocol>: ObservableObject {
             }
             await self.fetchSearch()
         }
-        if searchText.isEmpty && tempCharacter != nil {
-            tempCharacter = nil
+        if searchText.isEmpty && tempData != nil {
+            tempData = nil
         }
     }
-    
-    func loadNextPageIfNeeded(currentRow: CharacterDetailsViewModel) {
-        if rows.last == currentRow {
-            guard let pageSize else {
-                return
-            }
-            
-            let totalLoadedCharacters = currentPage * pageSize
-            if totalLoadedCharacters < totalCharacters ?? 0 {
-                isLoading = true
-                currentPage += 1
-                Task {
-                    await fetchCharacters(page: currentPage)
-                }
-            }
-        }
-    }
-    
 }

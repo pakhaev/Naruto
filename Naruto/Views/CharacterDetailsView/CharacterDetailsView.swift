@@ -105,7 +105,7 @@ struct CharacterDetailsView: View {
             .onAppear {
                 viewModel.getInfo()
             }
-            .navigationTitle(viewModel.characterName)
+            .navigationTitle(viewModel.name)
         .navigationBarTitleDisplayMode(.inline)
         }
     }

@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct GridView<T: DataResponseProtocol>: View {
+    
     @StateObject var viewModel: CharacterListViewModel<T>
     let title: String
     let showButton: Bool
-    
     @Binding var showMenu: Bool
     
     var body: some View {
         ScrollView {
             
-            if viewModel.loadedData {
+            if viewModel.isLoadedData {
                 HStack {
                     Spacer()
                     
@@ -30,24 +30,24 @@ struct GridView<T: DataResponseProtocol>: View {
             } else {
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
                     
-                    if let tempCharacter = viewModel.tempCharacter {
-                        
+                    //Первая разница
+                    if let tempCharacter = viewModel.tempData {
                         NavigationLink {
-                            CharacterDetailsView(viewModel: tempCharacter)
+                            CharacterDetailsView(viewModel: tempCharacter as! CharacterDetailsViewModel)
                         } label: {
-                            GridElementView(viewModel: tempCharacter)
+                            GridElementView(viewModel: tempCharacter as! CharacterDetailsViewModel)
                         }
                         
                     }
                     
-                    ForEach(viewModel.searchResults(), id: \.id) { characterDetailViewModel in
-                        
+                    //Вторая разница
+                    ForEach(viewModel.search(), id: \.id) { characterDetailViewModel in
                         NavigationLink {
-                            CharacterDetailsView(viewModel: characterDetailViewModel)
+                            CharacterDetailsView(viewModel: characterDetailViewModel as! CharacterDetailsViewModel)
                         } label: {
-                            GridElementView(viewModel: characterDetailViewModel)
+                            GridElementView(viewModel: characterDetailViewModel as! CharacterDetailsViewModel)
                             .onAppear {
-                                viewModel.loadNextPageIfNeeded(currentRow: characterDetailViewModel)
+                                viewModel.loadNextPageIfNeeded(currentRowName: characterDetailViewModel.name)
                             }
                         }
                     }
@@ -72,7 +72,7 @@ struct GridView<T: DataResponseProtocol>: View {
         
         .task {
             await viewModel.fetchInfo()
-            await viewModel.fetchCharacters(page: 1)
+            await viewModel.fetchData(page: 1)
         }
         .searchable(text: $viewModel.searchText)
         .onChange(of: viewModel.searchText) { _ in
@@ -101,7 +101,7 @@ struct GridElementView: View {
                 shadowIsOn: true,
                 defaultImage: viewModel.defaultImage
             )
-            Text(viewModel.characterName)
+            Text(viewModel.name)
                 .font(.headline)
         }
     }

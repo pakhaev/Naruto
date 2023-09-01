@@ -16,7 +16,7 @@ struct BlockListView<T: DataResponseProtocol>: View {
     @Binding var showMenu: Bool
     
     var body: some View {
-        let viewModel = BlockListViewModel<T>(t: dataType, url: url)
+        let viewModel = BlockListViewModel<T>(type: dataType, url: url)
 
         NavigationView {
             GridBoxView(

@@ -62,9 +62,6 @@ struct NarutoView: View {
                 }
             }
         )
-        .toolbar {
-            Text("Hello")
-        }
     }
 }
 

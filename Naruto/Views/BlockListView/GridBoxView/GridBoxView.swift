@@ -10,14 +10,12 @@ import SwiftUI
 struct GridBoxView<T: DataResponseProtocol>: View {
     
     @StateObject var viewModel: BlockListViewModel<T>
-    
     let title: String
-    
     @Binding var showMenu: Bool
     
     var body: some View {
         ScrollView {
-            if viewModel.loadedData {
+            if viewModel.isLoadedData {
                 HStack {
                     Spacer()
                     
@@ -30,7 +28,8 @@ struct GridBoxView<T: DataResponseProtocol>: View {
             } else {
                 LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]) {
                     
-                    if let tempBoxing = viewModel.tempInfo {
+                    //Первая разница
+                    if let tempBoxing = viewModel.tempData {
                         NavigationLink {
                             GridView<CharactersData>(
                                 viewModel: CharacterListViewModel(
@@ -49,6 +48,7 @@ struct GridBoxView<T: DataResponseProtocol>: View {
 
                     }
                     
+                    //Вторая разница
                     ForEach(viewModel.search(), id:\.id) { newValue in
                         NavigationLink {
                             GridView<CharactersData>(
@@ -66,7 +66,7 @@ struct GridBoxView<T: DataResponseProtocol>: View {
                                 name: newValue.name
                             )
                             .onAppear {
-                                viewModel.loadNextPageIfNeeded(currentRow: newValue.name)
+                                viewModel.loadNextPageIfNeeded(currentRowName: newValue.name)
                             }
                         }
                     }
@@ -89,9 +89,8 @@ struct GridBoxView<T: DataResponseProtocol>: View {
         
         .task {
             await viewModel.fetchInfo()
-            await viewModel.fetchClans(page: 1)
+            await viewModel.fetchData(page: 1)
         }
-        .animation(.default, value: viewModel.searchText)
         .searchable(text: $viewModel.searchText)
         .onChange(of: viewModel.searchText) { _ in
             viewModel.sleepFetchSearch()

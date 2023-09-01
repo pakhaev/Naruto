@@ -198,10 +198,11 @@ struct ClansData: DataResponseProtocol {
     }
 }
 
-struct InfoData: Decodable, Identifiable {
-    let id = UUID()
+struct InfoData: Decodable, DataModelProtocol {
+    var id: Int
+
     let name: String
-    let characters: [Character]
+    var characters: [Character]
 }
 
 

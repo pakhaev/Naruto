@@ -8,16 +8,51 @@
 import Foundation
 
 
-final class CharacterDetailsViewModel: ObservableObject {
-    let id: Int
+protocol DataModelProtocol {
+    var id: Int { get }
+    var name: String { get }
+    var characters: [Character] { get set }
+}
+
+final class CharacterDetailsViewModel: ObservableObject, DataModelProtocol {
     
     @Published var data: [String: [String]] = [:]
+
+    var id: Int
     
-    
-    private let character: Character
+    var characters: [Character] = []
     
     var defaultImage: String {
         character.defaultImage
+    }
+    
+    var name : String {
+        character.name
+    }
+    
+    var imageData: URL? {
+        guard let firstURL = character.images.last,
+              let url = URL(string: firstURL) else {
+            return nil
+        }
+        return url
+    }
+        
+    private let character: Character
+    
+    init(character: Character) {
+        self.character = character
+        self.id = character.id
+    }
+    
+    func getInfo() {
+        getJutsu()
+        getPersonal()
+        getDebut()
+        
+        if data.isEmpty {
+            data.updateValue(["There is no information about this character"], forKey: "Ooops...")
+        }
     }
     
     private func getDebut() {
@@ -107,38 +142,10 @@ final class CharacterDetailsViewModel: ObservableObject {
             }
         }
     }
-    
-    func getInfo() {
-        getJutsu()
-        getPersonal()
-        getDebut()
-        
-        if data.isEmpty {
-            data.updateValue(["There is no information about this character"], forKey: "Ooops...")
-        }
-        
-    }
-
-    var characterName: String {
-        character.name
-    }
-    
-    var imageData: URL? {
-        guard let firstURL = character.images.last,
-              let url = URL(string: firstURL) else {
-            return nil
-        }
-        return url
-    }
-    
-    init(character: Character) {
-        self.character = character
-        self.id = character.id
-    }
 }
 
-extension CharacterDetailsViewModel: Equatable {
-    static func == (lhs: CharacterDetailsViewModel, rhs: CharacterDetailsViewModel) -> Bool {
-        return lhs.id == rhs.id
-    }
-}
+//extension CharacterDetailsViewModel: Equatable {
+//    static func == (lhs: CharacterDetailsViewModel, rhs: CharacterDetailsViewModel) -> Bool {
+//        return lhs.id == rhs.id
+//    }
+//}

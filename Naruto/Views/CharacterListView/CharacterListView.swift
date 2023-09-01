@@ -16,7 +16,7 @@ struct CharacterListView<T: DataResponseProtocol>: View {
     @Binding var showMenu: Bool
     
     var body: some View {
-        let viewModel = CharacterListViewModel<T>(t: dataType, url: url)
+        let viewModel = CharacterListViewModel<T>(type: dataType, url: url)
 
         NavigationView {
             GridView(viewModel: viewModel, title: title, showButton: true, showMenu: $showMenu)
