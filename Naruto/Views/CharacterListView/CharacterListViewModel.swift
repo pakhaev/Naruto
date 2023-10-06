@@ -38,7 +38,10 @@ final class CharacterListViewModel<T: DataResponseProtocol>: CommonViewModel<T> 
         }
         
         do {
-            isLoading = true
+            await MainActor.run {
+                isLoading = true
+            }
+            
             let urlWIthSearch = "\(url)/search?name=\(searchText.replacingOccurrences(of: " ", with: "%20"))"
             let character = try await NetworkManager.shared.fetch(
                 Character.self,
