@@ -51,7 +51,7 @@ struct BlockListView<T: DataResponseProtocol>: View {
                     name: newValue.name
                 )
                 .onAppear {
-                    viewModel.loadNextPageIfNeeded(currentRowName: newValue.name)
+                    viewModel.loadNextPageIfNeeded(currentRowId: newValue.id)
                 }
             }
         }
@@ -70,9 +70,9 @@ struct BoxElementView: View {
                 .frame(width: 150, height: 150)
                 .cornerRadius(20)
             Text(name)
+                .font(.headline)
         }
     }
-    
 }
 
 struct GridBoxView_Previews: PreviewProvider {

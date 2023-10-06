@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @StateObject var viewModel = SettingsViewModel()
+    @StateObject private var viewModel = SettingsViewModel()
     @State private var showPopup = false
     @Binding var showMenu: Bool
     

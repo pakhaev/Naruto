@@ -19,7 +19,6 @@ final class GenericListViewModel<T: DataResponseProtocol>: ObservableObject {
            dataType == TailedBeastsData.self ||
            dataType == KaraData.self ||
            dataType == AkatsukiData.self {
-            print("Im here")
             viewModel = CharacterListViewModel<T>(type: dataType, url: url)
         } else if dataType == ClansData.self ||
                   dataType == VillagesData.self ||

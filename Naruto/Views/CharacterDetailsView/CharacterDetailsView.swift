@@ -67,39 +67,6 @@ struct CharacterDetailsView: View {
                         }
                         
                     }
-                    
-                    
-//                    ForEach(Array(viewModel.data), id: \.key) { key, value in
-//                        HStack {
-//                            VStack(alignment: .leading, spacing: 0) {
-//                                Text(key)
-//                                    .font(.headline)
-//                                    .padding(.leading, 12)
-//                                    .foregroundColor(.black)
-//
-//                                ForEach(Array(value.enumerated()), id: \.0) { _, oneValue in
-//                                    HStack {
-//                                        Image(systemName: "checkmark")
-//                                            .frame(width: 10, height: 10)
-//                                            .foregroundColor(.black)
-//
-//                                        Text(oneValue)
-//                                            .foregroundColor(.black)
-//                                        Spacer()
-//                                    }
-//                                    .padding(.leading, 30)
-//                                    .padding(.top, 10)
-//                                }
-//                            }
-//                            .padding([.top, .bottom])
-//                            .frame(maxWidth: .infinity)
-//                            .overlay(
-//                                RoundedRectangle(cornerRadius: 10)
-//                                    .stroke(.black, lineWidth: 2)
-//                            )
-//                        }
-//                        .padding([.leading, .trailing], 17)
-//                    }
                 }
             }
             .onAppear {

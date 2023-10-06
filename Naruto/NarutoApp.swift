@@ -11,7 +11,7 @@ import SwiftUI
 struct NarutoApp: App {
     var body: some Scene {
         WindowGroup {
-            NarutoView()
+            SplashScreenView()
         }
     }
 }

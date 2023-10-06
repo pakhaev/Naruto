@@ -9,19 +9,23 @@ import SwiftUI
 
 struct GenericListView<T: DataResponseProtocol>: View {
     
-    @StateObject var viewModel = GenericListViewModel<T>()
+    @StateObject private var networkMonitor = NetworkMonitor()
+    @StateObject private var viewModel = GenericListViewModel<T>()
     
     let dataType: T.Type
     let url: API
     let title: String
     
     @Binding var showMenu: Bool
+    @State private var showNetworkAlert = false
     
     var body: some View {
-        
         NavigationView {
             GenericGridView(
-                viewModel: viewModel.getViewModelType(dataType: dataType, url: url),
+                viewModel: viewModel.getViewModelType(
+                    dataType: dataType,
+                    url: url
+                ),
                 title: title,
                 showButton: true,
                 showMenu: $showMenu
@@ -31,7 +35,15 @@ struct GenericListView<T: DataResponseProtocol>: View {
             withAnimation(.spring()) {
                 showMenu = false
             }
+            showNetworkAlert = networkMonitor.isConnected == false
         }
+        .onChange(of: networkMonitor.isConnected) { connection in
+            showNetworkAlert = connection == false
+        }
+        .alert(
+            "Network connection seems to be offline.",
+            isPresented: $showNetworkAlert
+        ) {}
     }
 }
 struct GenericListView_Previews: PreviewProvider {

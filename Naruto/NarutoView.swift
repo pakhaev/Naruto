@@ -9,8 +9,8 @@ import SwiftUI
 
 struct NarutoView: View {
     
-    @State var selectedTab = 0
-    @State var showMenu = false
+    @State private var selectedTab = 0
+    @State private var showMenu = false
     
     var body: some View {
         ZStack {

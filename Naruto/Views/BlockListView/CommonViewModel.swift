@@ -7,9 +7,7 @@
 
 import Foundation
 
-
 class CommonViewModel<T: DataResponseProtocol>: ObservableObject {
-
     @Published var data: [DataModelProtocol] = []
     @Published var tempData: DataModelProtocol?
     
@@ -60,7 +58,6 @@ class CommonViewModel<T: DataResponseProtocol>: ObservableObject {
                     isLoadedData = false
                 }
             }
-            
         } catch {
             print(error)
         }
@@ -98,30 +95,35 @@ class CommonViewModel<T: DataResponseProtocol>: ObservableObject {
             await MainActor.run {
                 if let characters = loadingData.data as? [Character] {
                     if currentPage == 1 {
-                        data = characters.map { CharacterDetailsViewModel(character: $0) }
-                    } else {
-                        data.append(contentsOf: characters.map { CharacterDetailsViewModel(character: $0) })
+                        data = characters.map {
+                            CharacterDetailsViewModel(character: $0)
+                        }
+                    } else if characters.first?.id != data.first?.id {
+                        data.append(
+                            contentsOf: characters.map {
+                                CharacterDetailsViewModel(character: $0)
+                            }
+                        )
                     }
                 } else if let boxing = loadingData.data as? [InfoData] {
                     if currentPage == 1 {
                         data = boxing
-                    } else {
+                    } else if boxing.first?.id != data.first?.id {
                         data.append(contentsOf: boxing)
                     }
                 }
             }
-            
         } catch {
             print(error)
         }
     }
     
-    func loadNextPageIfNeeded(currentRowName: String) {
-        if data.last?.name == currentRowName {
-            guard let pageSize else {
-                return
-            }
-            
+    func loadNextPageIfNeeded(currentRowId: Int) {
+        guard let pageSize else {
+            return
+        }
+        
+        if data.last?.id == currentRowId {
             let totalLoadedCharacters = currentPage * pageSize
             if totalLoadedCharacters < totalData ?? 0 {
                 isLoading = true
@@ -134,7 +136,6 @@ class CommonViewModel<T: DataResponseProtocol>: ObservableObject {
     }
     
     func sleepFetchSearch() {
-        
     }
     
 }

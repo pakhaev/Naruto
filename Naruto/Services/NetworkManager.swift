@@ -4,7 +4,6 @@
 //
 //  Created by Khusain on 31.07.2023.
 //
-
 import Foundation
 
 enum NetworkError: Error {
@@ -13,11 +12,14 @@ enum NetworkError: Error {
     case decodingError
     case noImage
     case typeMismatch
+    case noConnection
 }
 
 final class NetworkManager {
     let url = "https://www.narutodb.xyz/api/"
     static let shared = NetworkManager()
+    
+    let networkMonitor = NetworkMonitor()
     
     private init() {}
     
@@ -42,6 +44,10 @@ final class NetworkManager {
         }
         
         // Если данных нет в кэше, выполним сетевой запрос
+        
+        if !networkMonitor.isConnected {
+            throw NetworkError.noConnection
+        }
         
         let (data, _) = try await URLSession.shared.data(from: url)
         let decoder = JSONDecoder()

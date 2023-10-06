@@ -26,13 +26,17 @@ final class CharacterListViewModel<T: DataResponseProtocol>: CommonViewModel<T> 
     }
     
     func fetchSearch() async {
-        if searchText.isEmpty || data.contains(where: { $0.name.contains(searchText)}) || !fetch {
+        
+        if searchText.isEmpty ||
+            data.contains(where: { $0.name.contains(searchText)}) ||
+            !fetch {
             return
         }
 
         guard let url else {
             return
         }
+        
         do {
             isLoading = true
             let urlWIthSearch = "\(url)/search?name=\(searchText.replacingOccurrences(of: " ", with: "%20"))"

@@ -27,7 +27,7 @@ struct CharacterListView<T: DataResponseProtocol>: View {
             } label: {
                 GridElementView(viewModel: characterDetailViewModel as! CharacterDetailsViewModel)
                 .onAppear {
-                    viewModel.loadNextPageIfNeeded(currentRowName: characterDetailViewModel.name)
+                    viewModel.loadNextPageIfNeeded(currentRowId: characterDetailViewModel.id)
                 }
             }
         }
